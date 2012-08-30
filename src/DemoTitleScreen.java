@@ -20,7 +20,6 @@ public class DemoTitleScreen extends Applet {
 		setSize(640,480);
 		
 		shadowOuter = new BufferedImage(640,480,BufferedImage.TYPE_INT_ARGB);
-		
 		Graphics g = shadowOuter.getGraphics();
 		Graphics2D g2 = (Graphics2D)g;
 		Point2D center = new Point2D.Float(getWidth()/2, getHeight()/2);
