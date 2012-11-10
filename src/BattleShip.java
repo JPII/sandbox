@@ -18,27 +18,36 @@ public class BattleShip extends JFrame
 	}
 	
 	public void paint(Graphics g){
-		//Base(g);
-		gun(g,X+230,Y+310,30,1);
-		gun(g,X+270,Y+310,30,2);
-		gun(g,X+270,Y+390,30,3);
-		gun(g,X+230,Y+390,30,4);
-		//CommandCenter(g);
+		Base(g,X+400,Y+300);
+		gun(g,X+300,Y+285,30,1);
+		gun(g,X+230,Y+285,30,4);
+		gun(g,X+450,Y+285,30,2);
+		gun(g,X+500,Y+285,30,3);
 	}
 	
-	public void Base(Graphics g)
+	public void Base(Graphics g, int x, int y)
 	{	
+		//x and y are the center of the ship
+		//size will be in increments of 5
+		
 		//Bow
 		g.setColor(new Color(255,211,155));
-		g.fillArc(X+145, Y+300, 250, 50, 90, 180);
+		g.fillArc((x-125)-115,y-25,250,50,90,180);
 		
 		//Stern
-		g.setColor(Color.gray);
-		g.fillArc(X+450, Y+300, 100, 50, 270, 180);
+		g.setColor(new Color(255,211,155));
+		g.fillArc((x+180)-115,y-25,100,50,270,180);
 		
 		//Deck
 		g.setColor(new Color(255,211,155));
-		g.fillRect(X+270,Y+300,230,50);
+		g.fillRect(x-115,y-25,230,50);
+		
+		//Command Center
+		g.setColor(Color.gray.darker().darker());
+		g.fillRect(x-50,y-14,70,30);
+		g.setColor(Color.gray.darker());
+		g.fillRect(x-35,y-18,15,40);
+		g.fillRect(x-15,y-9,30,20);
 	}
 	
 	public void gun(Graphics g, int x, int y, int size, int d)
@@ -75,14 +84,5 @@ public class BattleShip extends JFrame
 			g.fillRect(x-(size-(size/10)), y+(size/6), size-(size/10), size/6);
 			g.fillRect(x-(size-(size/10)), y+(size-(size/3)), size-(size/10), size/6);
 		}
-	}
-	
-	public void CommandCenter(Graphics g)
-	{
-		g.setColor(Color.gray.darker().darker());
-		g.fillRect(X+350,Y+310,70,30);
-		g.setColor(Color.gray.darker());
-		g.fillRect(X+365,Y+305,15,40);
-		g.fillRect(X+385,Y+315,30,20);
 	}
 }
