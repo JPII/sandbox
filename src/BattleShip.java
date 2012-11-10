@@ -18,58 +18,63 @@ public class BattleShip extends JFrame
 	}
 	
 	public void paint(Graphics g){
-		Base(g);
-		Guns(g);
-		CommandCenter(g);
+		//Base(g);
+		gun(g,X+230,Y+310,30,1);
+		gun(g,X+270,Y+310,30,2);
+		gun(g,X+270,Y+390,30,3);
+		gun(g,X+230,Y+390,30,4);
+		//CommandCenter(g);
 	}
 	
 	public void Base(Graphics g)
 	{	
+		//Bow
+		g.setColor(new Color(255,211,155));
+		g.fillArc(X+145, Y+300, 250, 50, 90, 180);
+		
+		//Stern
 		g.setColor(Color.gray);
-		g.fillArc(X+200, Y+300, 150, 50, 90, 180);
-		g.fillArc(X+425, Y+300, 150, 50, 270, 180);
-		Polygon p = new Polygon();
-		p.addPoint(X+270,Y+300);
-		p.addPoint(X+500,Y+300);
-		p.addPoint(X+500,Y+350);
-		p.addPoint(X+270,Y+350);
-		p.addPoint(X+270,Y+300);
-		g.fillPolygon(p);
-		g.setColor(Color.gray.brighter());
-		for(int q = 300; q <= 304; q++)
-		{
-			g.drawArc(X+205, Y+q, 125, 40, 180, 90);
-			g.drawArc(X+436, Y+q, 130, 40, 270, 90);
-		}
-		for(int q = 340; q <= 345; q++)
-			g.drawLine(X+267,Y+q,X+500,Y+q);
+		g.fillArc(X+450, Y+300, 100, 50, 270, 180);
+		
+		//Deck
+		g.setColor(new Color(255,211,155));
+		g.fillRect(X+270,Y+300,230,50);
 	}
 	
-	public void Guns(Graphics g)
+	public void gun(Graphics g, int x, int y, int size, int d)
 	{
-		//gun left
-		g.setColor(Color.black);
-		g.fillRect(X+206, Y+315, 20, 5);
-		g.fillRect(X+206, Y+325, 20, 5);
-		g.setColor(Color.gray.darker().darker());
-		g.fillRect(X+208, Y+317, 20, 2);
-		g.fillRect(X+208, Y+327, 20, 2);
-		g.setColor(Color.black);
-		g.fillOval(X+220, Y+310, 26, 26);
-		g.setColor(new Color(70,70,70));
-		g.fillOval(X+223, Y+313, 20, 20);
-		
-		//gun right
-		g.setColor(Color.black);
-		g.fillRect(X+545, Y+315, 20, 5);
-		g.fillRect(X+545, Y+325, 20, 5);
-		g.setColor(Color.gray.darker().darker());
-		g.fillRect(X+545, Y+317, 20, 2);
-		g.fillRect(X+545, Y+327, 20, 2);
-		g.setColor(Color.black);
-		g.fillOval(X+525, Y+310, 26, 26);
-		g.setColor(new Color(70,70,70));
-		g.fillOval(X+528, Y+313, 20, 20);
+		if(d == 1)
+		{
+			g.setColor(Color.gray.darker());
+			g.fillRect(x,y,size,size);
+			g.setColor(Color.black);
+			g.fillRect(x+(size/6), y-(size-(size/10)), size/6, size-(size/10));
+			g.fillRect(x+(size-(size/3)), y-(size-(size/10)), size/6, size-(size/10));
+		}
+		else if(d == 2)
+		{
+			g.setColor(Color.gray.darker());
+			g.fillRect(x,y,size,size);
+			g.setColor(Color.black);
+			g.fillRect(x+(size/6), y+size, size/6, size-(size/10));
+			g.fillRect(x+(size-(size/3)), y+size, size/6, size-(size/10));
+		}
+		else if(d == 3)
+		{
+			g.setColor(Color.gray.darker());
+			g.fillRect(x,y,size,size);
+			g.setColor(Color.black);
+			g.fillRect(x+size, y+(size/6), size-(size/10), size/6);
+			g.fillRect(x+size, y+(size-(size/3)), size-(size/10), size/6);
+		}
+		else if(d == 4)
+		{
+			g.setColor(Color.gray.darker());
+			g.fillRect(x,y,size,size);
+			g.setColor(Color.black);
+			g.fillRect(x-(size-(size/10)), y+(size/6), size-(size/10), size/6);
+			g.fillRect(x-(size-(size/10)), y+(size-(size/3)), size-(size/10), size/6);
+		}
 	}
 	
 	public void CommandCenter(Graphics g)
