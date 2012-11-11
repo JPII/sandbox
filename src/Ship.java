@@ -17,13 +17,27 @@ public class Ship {
 	public boolean moving;
 	
 	public Ship(int x, int y){
-		this.x = x;
-		this.y = y;
+		setX(x);
+		setY(y);
 		this.gunRotation = WEST;
+		beta=gunRotation;
 		size = 30;
 		moving = false;
-		beta=gunRotation;
 	}
+	
+	public void setX(int x){
+		this.x=x;
+	}
+	public void setY(int y){
+		this.y=y;
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
+	
 	
 	public void drawShip(Graphics g){
 		if(!moving) {
