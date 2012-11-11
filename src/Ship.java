@@ -5,6 +5,7 @@ public class Ship {
 	
 	private int x,y;
 	private int gunRotation;
+	private int beta;
 	
 	public final int NORTH = 90;
 	public final int SOUTH = 270;
@@ -12,18 +13,43 @@ public class Ship {
 	public final int WEST = 180;
 	
 	private int size;
+	public boolean moving;
 	
 	public Ship(int x, int y){
 		this.x = x;
 		this.y = y;
 		this.gunRotation = EAST;
 		size = 30;
+		moving = false;
+		beta=gunRotation;
 	}
 	
 	public void drawShip(Graphics g){
-		base(g);
-		guns(g);
-		gunRotation+=10;
+		if(!moving) {
+			base(g);
+			guns(g,gunRotation);
+		}
+		else{
+			if(beta!=gunRotation){
+				base(g);
+				guns(g,gunRotation);
+				if(beta<gunRotation)
+					gunRotation --;
+				else if(beta>gunRotation){
+					gunRotation++;
+				}
+			}
+			else if(beta==gunRotation){
+				base(g);
+				guns(g,gunRotation);
+				moving = false;
+			}
+		}
+	}
+	
+	public void addRotation(int theta){
+		beta+=theta;
+		moving = true;
 	}
 	
 	private void base(Graphics g)
@@ -51,48 +77,39 @@ public class Ship {
 		g.fillRect(x-15,y-9,30,20);
 	}
 	
-	private void guns(Graphics g)
+	private void guns(Graphics g,int rotation)
 	{
-		drawGun(g,x-100,y);
-		//drawGun(g,x-170,y);
-		//drawGun(g,x+50,y);
-		//drawGun(g,x+100,y);
+		drawGun(g,x-100,y,rotation);
+		drawGun(g,x-170,y,rotation);
+		drawGun(g,x+50,y,rotation);
+		drawGun(g,x+100,y,rotation);
 	}
 	
-	private int getCos(int size){
+	private int getCos(int size,int gunRotation){
 		return (int) (size*Math.cos(Math.toRadians(gunRotation)));
 	}
-	private int getSin(int size){
+	private int getSin(int size, int gunRotation){
 		return (int) (size*Math.sin(Math.toRadians(gunRotation)));
 	}
 	
-	private void drawGun(Graphics g,int x, int y) {
-		int cvalue = getCos(size);
-		int svalue = getSin(size);		 
+	private void drawGun(Graphics g,int x, int y,int rotation) {
+		int cvalue = getCos(size,rotation);
+		int svalue = getSin(size,rotation);		 
 		int yoffset = (cvalue+svalue)/2;
 		int offset = -1*(cvalue-svalue)/2;
 		
+		g.setColor(Color.gray.darker());
 		int xarray[] = {x-offset,x+svalue-offset,x+svalue-cvalue-offset,x-cvalue-offset};
 		int yarray[] = {y+yoffset,y-cvalue+yoffset,y-cvalue-svalue+yoffset,y-svalue+yoffset};
-		
-		g.setColor(Color.gray.darker());
-	//	g.fillRect(x-size/2,y-size/2,size,size);
 		g.fillPolygon(xarray,yarray,4);
 		
-		g.setColor(Color.black);
-	//	g.fillRect(x+(size/6) - size/2, y-(size-(size/10)) - size/2, size/6, size-(size/10));
-	//	g.fillRect(x+(size-(size/3)) - size/2, y-(size-(size/10)) - size/2, size/6, size-(size/10));
-		
-		int xarray2[] = {xarray[0]-getCos(size/3),xarray[0]-getCos(size/3+size/6),xarray[0]-getCos(size/3+size/6),xarray[0]-getCos(size/3)};
-		int yarray2[] = {yarray[0]-getSin(size/3),yarray[0]-getSin(size/3+size/6),yarray[0]+getCos(size-size/10),yarray[0]+getCos(size-size/10)};
+		g.setColor(Color.black);		
+		int xarray2[] = {xarray[0]-getCos(size/3,rotation),xarray[0]-getCos(size/3-size/6,rotation),xarray[0]-getSin(size-size/10,rotation)-getCos(size/3-size/6,rotation),xarray[0]-getSin(size-size/10,rotation)-getCos(size/3,rotation)};
+		int yarray2[] = {yarray[0]-getSin(size/3,rotation),yarray[0]-getSin(size/3-size/6,rotation),yarray[0]+getCos(size-size/10,rotation)-getSin(size/3-size/6,rotation),yarray[0]+getCos(size-size/10,rotation)-getSin(size/3,rotation)};
 		g.fillPolygon(xarray2,yarray2,4);
 		
-		g.setColor(Color.red);
-		g.fillRect(x-2, y-2, 4, 4);
-		
-		g.setColor(Color.blue);
-		g.fillRect(xarray2[2]-2, yarray2[2]-2, 4, 4);
-		
-		
+		int xarray3[] = {xarray[3]+getCos(size/3,rotation),xarray[3]+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/10,rotation)+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/10,rotation)+getCos(size/3,rotation)};
+		int yarray3[] = {yarray[3]+getSin(size/3,rotation),yarray[3]+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/10,rotation)+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/10,rotation)+getSin(size/3,rotation)};
+		g.fillPolygon(xarray3,yarray3,4);		
 	}
 }
