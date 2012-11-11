@@ -7,18 +7,19 @@ public class Ship {
 	private int gunRotation;
 	private int beta;
 	
-	public final int NORTH = 90;
-	public final int SOUTH = 270;
-	public final int EAST = 0;
-	public final int WEST = 180;
+	public final int NORTH = 0;
+	public final int SOUTH = 180;
+	public final int EAST = 270;
+	public final int WEST = 90;
 	
+	private int gunSize = 4;
 	private int size;
 	public boolean moving;
 	
 	public Ship(int x, int y){
 		this.x = x;
 		this.y = y;
-		this.gunRotation = EAST;
+		this.gunRotation = WEST;
 		size = 30;
 		moving = false;
 		beta=gunRotation;
@@ -59,15 +60,24 @@ public class Ship {
 		
 		//Bow
 		g.setColor(new Color(255,211,155));
+		g.setColor(Color.gray.brighter());
 		g.fillArc((x-125)-115,y-25,250,50,90,180);
+		g.setColor(Color.black);
+		g.drawArc((x-125)-115,y-25,250,50,90,180);
 		
 		//Stern
 		g.setColor(new Color(255,211,155));
+		g.setColor(Color.gray.brighter());
 		g.fillArc((x+180)-115,y-25,100,50,270,180);
+		g.setColor(Color.black);
+		g.drawArc((x+180)-115,y-25,100,50,270,180);
 		
 		//Deck
 		g.setColor(new Color(255,211,155));
-		g.fillRect(x-115,y-25,230,50);
+		g.setColor(Color.black);
+		g.drawRect(x-115,y-25,230,50);
+		g.setColor(Color.gray.brighter());
+		g.fillRect(x-115,y-24,231,49);
 		
 		//Command Center
 		g.setColor(Color.gray.darker().darker());
@@ -81,8 +91,8 @@ public class Ship {
 	{
 		drawGun(g,x-100,y,rotation);
 		drawGun(g,x-170,y,rotation);
-		drawGun(g,x+50,y,rotation);
-		drawGun(g,x+100,y,rotation);
+		drawGun(g,x+60,y,rotation);
+		drawGun(g,x+130,y,rotation);
 	}
 	
 	private int getCos(int size,int gunRotation){
@@ -104,12 +114,12 @@ public class Ship {
 		g.fillPolygon(xarray,yarray,4);
 		
 		g.setColor(Color.black);		
-		int xarray2[] = {xarray[0]-getCos(size/3,rotation),xarray[0]-getCos(size/3-size/6,rotation),xarray[0]-getSin(size-size/10,rotation)-getCos(size/3-size/6,rotation),xarray[0]-getSin(size-size/10,rotation)-getCos(size/3,rotation)};
-		int yarray2[] = {yarray[0]-getSin(size/3,rotation),yarray[0]-getSin(size/3-size/6,rotation),yarray[0]+getCos(size-size/10,rotation)-getSin(size/3-size/6,rotation),yarray[0]+getCos(size-size/10,rotation)-getSin(size/3,rotation)};
+		int xarray2[] = {xarray[0]-getCos(size/3,rotation),xarray[0]-getCos(size/3-size/6,rotation),xarray[0]-getSin(size-size/gunSize,rotation)-getCos(size/3-size/6,rotation),xarray[0]-getSin(size-size/gunSize,rotation)-getCos(size/3,rotation)};
+		int yarray2[] = {yarray[0]-getSin(size/3,rotation),yarray[0]-getSin(size/3-size/6,rotation),yarray[0]+getCos(size-size/gunSize,rotation)-getSin(size/3-size/6,rotation),yarray[0]+getCos(size-size/gunSize,rotation)-getSin(size/3,rotation)};
 		g.fillPolygon(xarray2,yarray2,4);
 		
-		int xarray3[] = {xarray[3]+getCos(size/3,rotation),xarray[3]+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/10,rotation)+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/10,rotation)+getCos(size/3,rotation)};
-		int yarray3[] = {yarray[3]+getSin(size/3,rotation),yarray[3]+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/10,rotation)+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/10,rotation)+getSin(size/3,rotation)};
+		int xarray3[] = {xarray[3]+getCos(size/3,rotation),xarray[3]+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/gunSize,rotation)+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/gunSize,rotation)+getCos(size/3,rotation)};
+		int yarray3[] = {yarray[3]+getSin(size/3,rotation),yarray[3]+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/gunSize,rotation)+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/gunSize,rotation)+getSin(size/3,rotation)};
 		g.fillPolygon(xarray3,yarray3,4);		
 	}
 }
