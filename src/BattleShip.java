@@ -10,9 +10,11 @@ public class BattleShip extends JFrame
 	Graphics g;
 	
 	Ship test;
+	Ship test2;
 	
 	public BattleShip(){
-		test = new Ship(400,300);
+		test = new Ship(400,350,1);
+		test2 = new Ship(400,250,2);
 		init();
 	}
 	public void init()
@@ -21,39 +23,24 @@ public class BattleShip extends JFrame
 		this.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent k) {
-				if(k.getKeyCode() == KeyEvent.VK_Z) {
-					rotate(-5);
-				}
-				if(k.getKeyCode() == KeyEvent.VK_Q) {
-					rotate(360);
-				}
-				if(k.getKeyCode() == KeyEvent.VK_E) {
-					rotate(-360);
-				}
-				if(k.getKeyCode() == KeyEvent.VK_X) {
-					rotate(5);
-				}
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-					if(test.getX() >= 260){
-						test.setX(test.getX()-10);
-						repaint();
-					}
+					test.setX(test.getX()-50);
+					test2.setX(test2.getX()-50);
+					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-					if(test.getX() <= 610){
-						test.setX(test.getX()+10);
-						repaint();
-					}
+					test.setX(test.getX()+50);
+					test2.setX(test2.getX()+50);
+					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
-					if(test.getY() >= 70){
-						test.setY(test.getY()-10);
-						repaint();
-					}
+					test.setY(test.getY()-50);
+					test2.setY(test2.getY()-50);
+					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
-					if(test.getY() <= 550)
-					test.setY(test.getY()+10);
+					test.setY(test.getY()+50);
+					test2.setY(test2.getY()+50);
 					repaint();
 				}
 			}
@@ -64,6 +51,9 @@ public class BattleShip extends JFrame
 			public void keyTyped(KeyEvent arg0) {
 			}
 		});
+		
+		MouseMotionListener mouse1 = new MouseAdapter() {public void mouseMoved(MouseEvent md){mouseM(md);}};
+		this.addMouseMotionListener(mouse1);
 
 		g = newBackground();
 	}
@@ -95,12 +85,10 @@ public class BattleShip extends JFrame
 		g.drawString("Right moves the ship right",50, 125);
 		g.drawString("Down moves the ship down", 50, 150);
 		g.drawString("Up moves the ship up", 50, 175);
-		g.drawString("'Z' rotates the guns counter-clockwise", 50, 200);
-		g.drawString("'X' rotates the guns clockwise", 50, 225);
-		g.drawString("'Q' rotates the guns for quite awhile", 50, 250);
 		test.drawShip(g);
+		test2.drawShip(g);
 		g2.drawImage(i,0,0,this);
-		if (test.moving){
+		if (test.moving || test2.moving){
 			repaint();
 		}
 	}
@@ -110,10 +98,12 @@ public class BattleShip extends JFrame
 	}
 	public void delay(int n){
 		try {Thread.sleep(n);} catch (Exception e) {System.out.println("Sleep failed");}
-	}
-	public void rotate(int degrees){
-		test.addRotation(degrees);
-		repaint();
-	}
-	
+	}	
+	public void mouseM(MouseEvent e){
+    	int x = e.getX();
+    	int y = e.getY();
+    	test.giveXandY(x,y);
+    	test2.giveXandY(x,y);
+    	repaint();
+    }	
 }

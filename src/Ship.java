@@ -15,14 +15,20 @@ public class Ship {
 	private int gunSize = 4;
 	private int size;
 	public boolean moving;
+	private boolean mouseEnabled;
+	private int color;
 	
-	public Ship(int x, int y){
+	private int mousex,mousey;
+	
+	public Ship(int x, int y,int color){
 		setX(x);
 		setY(y);
 		this.gunRotation = WEST;
 		beta=gunRotation;
 		size = 30;
 		moving = false;
+		mouseEnabled = true;
+		this.color=color;
 	}
 	
 	public void setX(int x){
@@ -37,7 +43,6 @@ public class Ship {
 	public int getY(){
 		return y;
 	}
-
 	public void drawShip(Graphics g){
 		if(!moving) {
 			base(g);
@@ -61,9 +66,13 @@ public class Ship {
 		}
 	}
 	
-	public void addRotation(int theta){
-		beta+=theta;
-		moving = true;
+	public void setRotation(int theta){
+		gunRotation = theta;
+	}
+	
+	public void giveXandY(int x, int y){
+		mousex=x;
+		mousey=y;
 	}
 	
 	private void base(Graphics g)
@@ -93,9 +102,9 @@ public class Ship {
 		g.fillRect(x-115,y-24,231,49);
 		
 		//Command Center
-		g.setColor(Color.gray.darker().darker());
+		g.setColor(getColor().darker().darker());
 		g.fillRect(x-50,y-14,70,30);
-		g.setColor(Color.gray.darker());
+		g.setColor(getColor().darker());
 		g.fillRect(x-35,y-18,15,40);
 		g.fillRect(x-15,y-9,30,20);
 	}
@@ -116,6 +125,16 @@ public class Ship {
 	}
 	
 	private void drawGun(Graphics g,int x, int y,int rotation) {
+		if(mouseEnabled){
+			double ycomp = y-mousey;
+	    	double xcomp = x-mousex;
+	    	double theta = Math.toDegrees((Math.atan(ycomp/xcomp)));
+	    	rotation = (int)theta;
+	    	rotation+=90;
+	    	if(xcomp<0)
+	    		rotation+=180;
+		}
+		
 		int cvalue = getCos(size,rotation);
 		int svalue = getSin(size,rotation);		 
 		int yoffset = (cvalue+svalue)/2;
@@ -134,5 +153,13 @@ public class Ship {
 		int xarray3[] = {xarray[3]+getCos(size/3,rotation),xarray[3]+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/gunSize,rotation)+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/gunSize,rotation)+getCos(size/3,rotation)};
 		int yarray3[] = {yarray[3]+getSin(size/3,rotation),yarray[3]+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/gunSize,rotation)+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/gunSize,rotation)+getSin(size/3,rotation)};
 		g.fillPolygon(xarray3,yarray3,4);		
+	}
+	
+	private Color getColor(){
+		switch(color){
+			case 1: return Color.green;
+			case 2: return Color.red;
+			default: return null;
+		}
 	}
 }
