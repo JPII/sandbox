@@ -105,8 +105,15 @@ public class Ship {
 		g.setColor(getColor().darker().darker());
 		g.fillRect(x-50,y-14,70,30);
 		g.setColor(getColor().darker());
-		g.fillRect(x-35,y-18,15,40);
+		g.fillRect(x-35,y-18,5,40);
+		g.fillRect(x-40,y-10,5,21);
 		g.fillRect(x-15,y-9,30,20);
+		g.setColor(getColor());
+		g.fillArc(x-25,y-10,20,20,90,180);
+		g.setColor(getColor().darker());
+		int xarray[] = {x-15,x-25,x-15,x-15};
+		int yarray[] = {y-9,y+1,y+10,y-9};
+		g.fillPolygon(xarray,yarray,4);
 	}
 	
 	private void guns(Graphics g,int rotation)
