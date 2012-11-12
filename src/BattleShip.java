@@ -22,28 +22,38 @@ public class BattleShip extends JFrame
 			@Override
 			public void keyPressed(KeyEvent k) {
 				if(k.getKeyCode() == KeyEvent.VK_Z) {
-					rotate(-30);
+					rotate(-5);
 				}
 				if(k.getKeyCode() == KeyEvent.VK_Q) {
-					rotate(30000);
+					rotate(360);
+				}
+				if(k.getKeyCode() == KeyEvent.VK_E) {
+					rotate(-360);
 				}
 				if(k.getKeyCode() == KeyEvent.VK_X) {
-					rotate(30);
+					rotate(5);
 				}
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-					test.setX(test.getX()-50);
-					repaint();
+					if(test.getX() >= 260){
+						test.setX(test.getX()-10);
+						repaint();
+					}
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-					test.setX(test.getX()+50);
-					repaint();
+					if(test.getX() <= 610){
+						test.setX(test.getX()+10);
+						repaint();
+					}
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
-					test.setY(test.getY()-50);
-					repaint();
+					if(test.getY() >= 70){
+						test.setY(test.getY()-10);
+						repaint();
+					}
 				}
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
-					test.setY(test.getY()+50);
+					if(test.getY() <= 550)
+					test.setY(test.getY()+10);
 					repaint();
 				}
 			}

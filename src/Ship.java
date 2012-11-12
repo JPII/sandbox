@@ -37,8 +37,7 @@ public class Ship {
 	public int getY(){
 		return y;
 	}
-	
-	
+
 	public void drawShip(Graphics g){
 		if(!moving) {
 			base(g);
