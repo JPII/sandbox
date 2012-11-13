@@ -11,6 +11,7 @@ public class Bullet {
 	private int currentx;
 	
 	private boolean moving;
+	private boolean done;
 	
 	@SuppressWarnings({ "rawtypes", "unused" })
 	private ArrayList particle;
@@ -46,12 +47,18 @@ public class Bullet {
 		if(endx>currentx)
 			currentx++;
 		g.setColor(Color.gray);
-		g.fillRect((int)(currentx), (int)(getY(currentx-startx)-1), 3, 3);
+		g.fillRect((int)(currentx)-2, (int)(getY(currentx-startx)-2), 5, 5);
 		if((int)currentx!=(int)endx){
 			moving=true;
 		}
-		else
+		else {
 			moving = false;
+			done = true;
+		}
+	}
+	
+	public boolean isdone(){
+		return done;
 	}
 	
 	public boolean getMoving(){

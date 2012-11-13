@@ -118,5 +118,9 @@ public class Turret {
 		for(int index=0; index<bullets.size(); index++){
 			bullets.get(index).drawBullet(g);
 		}
+		for(int index=0; index<bullets.size(); index++){
+			if(bullets.get(index).isdone())
+				bullets.remove(index);
+		}
 	}
 }
