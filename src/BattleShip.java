@@ -12,6 +12,8 @@ public class BattleShip extends JFrame
 	Ship test;
 	Ship test2;
 	
+	Image grid;
+	
 	public BattleShip(){
 		test = new Ship(400,350,30,1);
 		test2 = new Ship(400,250,30,2);
@@ -19,6 +21,16 @@ public class BattleShip extends JFrame
 	}
 	public void init()
 	{
+		grid = new BufferedImage(800,600,BufferedImage.TYPE_INT_ARGB);
+		Graphics gs = grid.getGraphics();
+		gs.setColor(Color.black);
+		for (int x = 0; x < 800; x += 50) {
+			gs.drawLine(x,0,x,600);
+		}
+		for (int y = 0; y < 600; y += 50){
+			gs.drawLine(0,y,800,y);
+		}
+		
 		reset();
 		this.addKeyListener(new KeyListener() {
 			@Override
@@ -95,6 +107,7 @@ public class BattleShip extends JFrame
 	public void paint(Graphics g2){
 		g.setColor(Color.white);
 		g.fillRect(0,0,800,600);
+		g.drawImage(grid, 8,30, null);
 		g.setColor(Color.black);
 		g.drawString("Left moves the ship left", 50, 100);
 		g.drawString("Right moves the ship right",50, 125);
