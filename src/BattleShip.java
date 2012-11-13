@@ -1,164 +1,134 @@
 import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.image.*;
+import java.util.*;
 
-@SuppressWarnings("serial")
-public class BattleShip extends JFrame
-{
-	Image i;
-	Graphics g;
+public class BattleShip {
 	
-	Ship test;
-	Ship test2;
+	private int x,y;
+	private int size;
 	
-	Image grid;
+	public final int NORTH = 0;
+	public final int SOUTH = 180;
+	public final int EAST = 270;
+	public final int WEST = 90;
 	
-	public BattleShip(){
-		test = new Ship(400,350,30,1);
-		test2 = new Ship(400,250,30,2);
-		init();
+	private ArrayList<Turret> guns;
+	
+	private int color;
+	
+	public BattleShip(int x, int y,int size,int color){
+		this.x=x;
+		this.y=y;
+		this.size = size;
+		this.color=color;
+		guns = new ArrayList<Turret>();
+		initArray();
 	}
-	public void init()
-	{
-		grid = new BufferedImage(800,600,BufferedImage.TYPE_INT_ARGB);
-		Graphics gs = grid.getGraphics();
-		gs.setColor(Color.black);
-		for (int x = 0; x < 800; x += 50) {
-			gs.drawLine(x,0,x,600);
+	
+	private void initArray(){
+		guns.add(new Turret(x-((size*3)+(size/3)),y,270,0,size,WEST));
+		guns.add(new Turret(x-((size*6)-(size/3)),y,270,0,size,WEST));
+		guns.add(new Turret(x+((size*2)-(size/3)),y,270,0,size,WEST));
+		guns.add(new Turret(x+((size*3)+(size/3)),y,270,0,size,WEST));
+	}
+	
+	public void addX(int x){
+		this.x+=x;
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).addX(x);
 		}
-		for (int y = 0; y < 600; y += 50){
-			gs.drawLine(0,y,800,y);
+	}
+	public void addY(int y){
+		this.y+=y;
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).addY(y);
 		}
-		
-		reset();
-		this.addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent k) {
-				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-					test.addX(-50);
-					test2.addX(-50);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-					test.addX(50);
-					test2.addX(50);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_UP){
-					test.addY(-50);
-					test2.addY(-50);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_DOWN){
-					test.addY(50);
-					test2.addY(50);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
-					test.addSize(5);
-					test2.addSize(5);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_PAGE_UP){
-					test.addSize(-5);
-					test2.addSize(-5);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_HOME){
-					test = new Ship(400,350,30,1);
-					test2 = new Ship(400,250,30,2);
-					repaint();
-				}
-			}
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-			}
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-			}
-		});
-		MouseListener mouse = new MouseAdapter() {public void mousePressed(MouseEvent e){mousePressed2(e);}
-		public void mouseReleased(MouseEvent e){mouseReleased2(e);}};
-		this.addMouseListener(mouse);
-		MouseMotionListener mouse1 = new MouseAdapter() {public void mouseMoved(MouseEvent md){mouseM(md);}
-		public void mouseDragged(MouseEvent md){mouseDrag(md);}};
-		this.addMouseMotionListener(mouse1);
-
-		g = newBackground();
 	}
-	public void reset() {
-		g = newBackground();
-		repaint();
+	public void addSize(int s){
+		this.size+=s;
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).addSize(s);
+		}
 	}
-	public Graphics newBackground() {
-		 i = clearBuffer();
-		 return i.getGraphics();
+	public int getX(){
+		return x;
 	}
-
-	public Image clearBuffer() {
-		return new BufferedImage(800+16, 600+38, BufferedImage.TYPE_INT_ARGB);
+	public int getY(){
+		return y;
 	}
-	public static void main(String[] args){
-		BattleShip battleship = new BattleShip();
-		battleship.setSize(800,600);
-		battleship.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		battleship.setVisible(true);
+	public void MouseMoved(int x, int y){
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).MouseMoved(x,y);
+		}
 	}
-	
-	
-	public void paint(Graphics g2){
-		g.setColor(Color.white);
-		g.fillRect(0,0,800,600);
-		g.drawImage(grid, 8,30, null);
-		g.setColor(Color.black);
-		g.drawString("Left moves the ship left", 50, 100);
-		g.drawString("Right moves the ship right",50, 125);
-		g.drawString("Down moves the ship down", 50, 150);
-		g.drawString("Up moves the ship up", 50, 175);
-		test.drawShip(g);
-		test2.drawShip(g);
-		g2.drawImage(i,0,0,this);
-		if(needsRepaint())
-			repaint();
+	public void MouseClicked(int x, int y){
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).MouseClicked(x,y);
+		}
 	}
-	public void update(Graphics g) {
-		paint(g);
-		delay(10);
-	}
-	public void delay(int n){
-		try {Thread.sleep(n);} catch (Exception e) {System.out.println("Sleep failed");}
-	}	
 	public boolean needsRepaint(){
-		return(test.needsRepaint() || test2.needsRepaint());
+		for(int index = 0; index<guns.size();index++){
+			if(guns.get(index).needsRepaint()){
+				return true;
+			}
+		}
+		return false;
+	}
+	public void drawShip(Graphics g){
+		base(g,size);
+		drawGuns(g);
 	}
 	
-	
-	public void mouseM(MouseEvent e){
-    	int x = e.getX();
-    	int y = e.getY();
-    	test.MouseMoved(x,y);
-    	test2.MouseMoved(x,y);
-    	repaint();
-    }	
-	public void mouseReleased2(MouseEvent e)
-	{
-		repaint();
+	private void drawGuns(Graphics g){
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).drawGun(g);
+		}
 	}
-	public void mousePressed2(MouseEvent e)
-    {
-    	int x = e.getX();
-    	int y = e.getY();
-    	test.MouseClicked(x,y);
-    	test2.MouseClicked(x,y);
-    	repaint();
-    }
-	public void mouseDrag(MouseEvent e)
-    {
-    	int x = e.getX();
-    	int y = e.getY();
-    	test.MouseMoved(x,y);
-    	test2.MouseMoved(x,y);
-    	repaint();
-    }
+	
+	private void base(Graphics g, int size)
+	{	
+		//x and y are the center of the ship
+		
+		//Bow
+		g.setColor(new Color(255,211,155));
+		g.setColor(Color.gray.brighter());
+		g.fillArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
+		g.setColor(Color.black);
+		g.drawArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
+		
+		//Stern
+		g.setColor(new Color(255,211,155));
+		g.setColor(Color.gray.brighter());
+		g.fillArc(x+((size*2)+(size/6)),y-(size-(size/6)),(size*3)+(size/3),(size*2)-(size/3),270,180);
+		g.setColor(Color.black);
+		g.drawArc(x+((size*2)+(size/6)),y-(size-(size/6)),(size*3)+(size/3),(size*2)-(size/3),270,180);
+		
+		//Deck
+		g.setColor(new Color(255,211,155));
+		g.setColor(Color.black);
+		g.drawRect(x-((size*4)-(size/6)),y-(size-(size/6)),(size*8)-(size/3),(size*2)-(size/3));
+		g.setColor(Color.gray.brighter());
+		g.fillRect(x-((size*4)-(size/6)),y-((size-(size/6))-1),(size*8)-(size/3)+1,(size*2)-(size/3)-1);
+		
+		//Command Center
+		g.setColor(getColor().darker().darker());
+		g.fillRect(x-((size*2)-(size/3)),y-((size/2)-(size/size)),((size*2)+(size/3)),size);
+		g.setColor(getColor().darker());
+		g.fillRect(x-(size+(size/6)),y-((size/2)+(size/10)),size/6,size+(size/3));
+		g.fillRect(x-(size+(size/3)),y-(size/3),size/6,(size-(size/3))+(size/size));
+		g.fillRect(x-(size/2),y-((size/6)+(size/10)+(size/size)),size,size-(size/3));
+		g.setColor(getColor());
+		g.fillArc(x-(size-(size/6)),y-((size/6)+(size/10)+(size/size)),size-(size/3),size-(size/3),90,180);
+		g.setColor(getColor().darker());
+		int xarray[] = {x-(size/2),x-(size-(size/6)),x-(size/2),x-(size/2)};
+		int yarray[] = {y-((size/6)+(size/10)+(size/size)),y+(size/15),y+(size/3)+(size/15),y-((size/6)+(size/10)+(size/size))};
+		g.fillPolygon(xarray,yarray,4);
+	}
+	
+	private Color getColor(){
+		switch(color){
+			case 1: return Color.green;
+			case 2: return Color.red;
+			default: return null;
+		}
+	}
 }
