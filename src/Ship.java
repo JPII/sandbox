@@ -45,6 +45,9 @@ public class Ship {
 	}
 	public void addSize(int s){
 		this.size+=s;
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).addSize(s);
+		}
 	}
 	public int getX(){
 		return x;
@@ -102,10 +105,10 @@ public class Ship {
 		g.fillRect(x-(size+(size/3)),y-(size/3),size/6,(size-(size/3))+(size/size));
 		g.fillRect(x-(size/2),y-((size/6)+(size/10)+(size/size)),size,size-(size/3));
 		g.setColor(getColor());
-		g.fillArc(x-(size-(size/6)),y-(size/3),size-(size/3),size-(size/3),90,180);
+		g.fillArc(x-(size-(size/6)),y-((size/6)+(size/10)+(size/size)),size-(size/3),size-(size/3),90,180);
 		g.setColor(getColor().darker());
 		int xarray[] = {x-(size/2),x-(size-(size/6)),x-(size/2),x-(size/2)};
-		int yarray[] = {y-((size/3)-(size/size)),y+(size/size),y+(size/3),y-((size/3)-(size/size))};
+		int yarray[] = {y-((size/6)+(size/10)+(size/size)),y+(size/15),y+(size/3)+(size/15),y-((size/6)+(size/10)+(size/size))};
 		g.fillPolygon(xarray,yarray,4);
 	}
 	

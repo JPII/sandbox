@@ -36,6 +36,9 @@ public class Turret {
 	public void addY(int y){
 		centery+=y;
 	}
+	public void addSize(int s){
+		size+=s;
+	}
 	
 	private int getAngle(int x, int y){
 		double ycomp = centery-y;

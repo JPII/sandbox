@@ -35,22 +35,22 @@ public class BattleShip extends JFrame
 		this.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent k) {
-				if(k.getKeyCode() == KeyEvent.VK_LEFT){
+				if(k.getKeyCode() == KeyEvent.VK_LEFT||k.getKeyCode() == KeyEvent.VK_A){
 					test.addX(-50);
 					test2.addX(-50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
+				if(k.getKeyCode() == KeyEvent.VK_RIGHT||k.getKeyCode() == KeyEvent.VK_D){
 					test.addX(50);
 					test2.addX(50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_UP){
+				if(k.getKeyCode() == KeyEvent.VK_UP||k.getKeyCode() == KeyEvent.VK_W){
 					test.addY(-50);
 					test2.addY(-50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_DOWN){
+				if(k.getKeyCode() == KeyEvent.VK_DOWN||k.getKeyCode() == KeyEvent.VK_S){
 					test.addY(50);
 					test2.addY(50);
 					repaint();
