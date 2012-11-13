@@ -95,7 +95,6 @@ public class BattleShip {
 		g.drawArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
 		
 		//Stern
-		g.setColor(new Color(255,211,155));
 		g.setColor(Color.gray.brighter());
 		g.fillArc(x+((size*2)+(size/6)),y-(size-(size/6)),(size*3)+(size/3),(size*2)-(size/3),270,180);
 		g.setColor(Color.black);
