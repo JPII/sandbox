@@ -8,6 +8,8 @@ public class Exec extends JFrame
 {
 	Image i;
 	Graphics g;
+	Image i2;
+	Graphics g3;
 	
 	BattleShip test;
 	BattleShip test2;
@@ -93,14 +95,20 @@ public class Exec extends JFrame
 		this.addMouseMotionListener(mouse1);
 
 		g = newBackground();
+		g3 = newForeground();
 	}
 	public void reset() {
 		g = newBackground();
+		g3 = newForeground();
 		repaint();
 	}
 	public Graphics newBackground() {
 		 i = clearBuffer();
 		 return i.getGraphics();
+	}
+	public Graphics newForeground() {
+		 i2 = clearBuffer();
+		 return i2.getGraphics();
 	}
 
 	public Image clearBuffer() {
@@ -117,16 +125,18 @@ public class Exec extends JFrame
 	public void paint(Graphics g2){
 		g.setColor(Color.white);
 		g.fillRect(0,0,800,600);
+		
 		g.drawImage(grid, 8,30, null);
 		g.setColor(Color.black);
 		g.drawString("Left moves the ship left", 50, 100);
 		g.drawString("Right moves the ship right",50, 125);
 		g.drawString("Down moves the ship down", 50, 150);
 		g.drawString("Up moves the ship up", 50, 175);
-		test.drawShip(g);
-		test2.drawShip(g);
 		ac.drawShip(g);
 		ac2.drawShip(g);
+		test.drawShip(g,g);
+		test2.drawShip(g,g);
+		g.drawImage(i2,0,0,this);
 		g2.drawImage(i,0,0,this);
 		if(needsRepaint())
 			repaint();

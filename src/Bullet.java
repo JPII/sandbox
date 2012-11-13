@@ -45,7 +45,7 @@ public class Bullet {
 		double y = (count)*Math.sin(theta);
 		currentx=(int)(x+startx);
 		currenty=(int)(y+starty);
-		count++;
+		count+=2;
 	}
 	
 	public void drawBullet(Graphics g){
@@ -53,9 +53,8 @@ public class Bullet {
 			increaseX(-1);
 		if(endx>currentx)
 			increaseX(1);
-		g.setColor(Color.gray);
-		g.fillRect(currentx-2, currenty-2, 5, 5);
-		if((int)currentx!=(int)endx){
+		drawBull(g);
+		if(isnearX()){
 			moving=true;
 		}
 		else {
@@ -63,11 +62,21 @@ public class Bullet {
 			moving = false;
 		}
 	}
+	public void drawBull(Graphics g){
+		g.setColor(Color.gray);
+		g.fillOval(currentx-2, currenty-2, 5, 5);
+	}
+	
+	private boolean isnearX(){
+		if(currentx<(int)endx+2 && currentx > (int)endx-2){
+			return false;
+		}
+		return true;
+	}
 	
 	public boolean isdone(){
 		return done;
 	}
-	
 	public boolean getMoving(){
 		return moving;
 	}

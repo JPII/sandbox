@@ -70,7 +70,7 @@ public class Turret {
 	
 	public void fireGun(int x, int y){
 		bullets.add(new Bullet(centerx,centery,x,y));
-		bullets.add(new Bullet(centerx,centery,x,y));
+		//bullets.add(new Bullet(centerx,centery,x,y));
 	}
 	
 	@SuppressWarnings("unused")
@@ -95,7 +95,7 @@ public class Turret {
 		return (int) (size*Math.sin(Math.toRadians(gunRotation)));
 	}
 	
-	public void drawGun(Graphics g) {
+	public void drawGun(Graphics g,Graphics g3) {
 		int cvalue = getCos(size,rotation);
 		int svalue = getSin(size,rotation);		 
 		int yoffset = (cvalue+svalue)/2;
@@ -116,11 +116,13 @@ public class Turret {
 		g.fillPolygon(xarray3,yarray3,4);
 		
 		for(int index=0; index<bullets.size(); index++){
-			bullets.get(index).drawBullet(g);
+			bullets.get(index).drawBullet(g3);
 		}
 		for(int index=0; index<bullets.size(); index++){
-			if(bullets.get(index).isdone())
+			if(bullets.get(index).isdone()){
 				bullets.remove(index);
+				moving = true;
+			}
 		}
 	}
 }

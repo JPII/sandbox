@@ -73,21 +73,20 @@ public class BattleShip {
 		}
 		return false;
 	}
-	public void drawShip(Graphics g){
+	public void drawShip(Graphics g,Graphics g3){
 		base(g,size);
-		drawGuns(g);
+		drawGuns(g,g3);
 	}
 	
-	private void drawGuns(Graphics g){
+	private void drawGuns(Graphics g,Graphics g3){
 		for(int index = 0; index<guns.size(); index++){
-			guns.get(index).drawGun(g);
+			guns.get(index).drawGun(g,g3);
 		}
 	}
 	
 	private void base(Graphics g, int size)
 	{	
 		//x and y are the center of the ship
-		
 		//Bow
 		g.setColor(Color.gray.brighter());
 		g.fillArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
