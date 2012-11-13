@@ -14,6 +14,7 @@ public class Ship {
 	private ArrayList<Turret> guns;
 	
 	private int color;
+	private int size;
 	
 	public Ship(int x, int y,int size,int color){
 		this.x=x;
@@ -25,10 +26,15 @@ public class Ship {
 	}
 	
 	private void initArray(){
-		guns.add(new Turret(x-100,y,270,0,30,WEST));
-		guns.add(new Turret(x-170,y,270,0,30,WEST));
-		guns.add(new Turret(x+50,y,270,0,30,WEST));
-		guns.add(new Turret(x+100,y,270,0,30,WEST));
+		//guns.add(new Turret(x-100,y,270,0,30,WEST));
+		//guns.add(new Turret(x-170,y,270,0,30,WEST));
+		//guns.add(new Turret(x+50,y,270,0,30,WEST));
+		//guns.add(new Turret(x+100,y,270,0,30,WEST));
+		size = 30;
+		guns.add(new Turret(x-((size*3)+(size/3)),y,270,0,size,WEST));
+		guns.add(new Turret(x-((size*6)-(size/3)),y,270,0,size,WEST));
+		guns.add(new Turret(x+((size*2)-(size/3)),y,270,0,size,WEST));
+		guns.add(new Turret(x+((size*3)+(size/3)),y,270,0,size,WEST));
 	}
 	
 	public void addX(int x){
