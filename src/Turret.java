@@ -70,7 +70,6 @@ public class Turret {
 	
 	public void fireGun(int x, int y){
 		bullets.add(new Bullet(centerx,centery,x,y));
-		//bullets.add(new Bullet(centerx,centery,x,y));
 	}
 	
 	@SuppressWarnings("unused")
