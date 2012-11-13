@@ -81,7 +81,8 @@ public class BattleShip extends JFrame
 		MouseListener mouse = new MouseAdapter() {public void mousePressed(MouseEvent e){mousePressed2(e);}
 		public void mouseReleased(MouseEvent e){mouseReleased2(e);}};
 		this.addMouseListener(mouse);
-		MouseMotionListener mouse1 = new MouseAdapter() {public void mouseMoved(MouseEvent md){mouseM(md);}};
+		MouseMotionListener mouse1 = new MouseAdapter() {public void mouseMoved(MouseEvent md){mouseM(md);}
+		public void mouseDragged(MouseEvent md){mouseDrag(md);}};
 		this.addMouseMotionListener(mouse1);
 
 		g = newBackground();
