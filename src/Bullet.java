@@ -52,8 +52,8 @@ public class Bullet {
 			moving=true;
 		}
 		else {
-			moving = false;
 			done = true;
+			moving = false;
 		}
 	}
 	

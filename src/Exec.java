@@ -15,8 +15,8 @@ public class Exec extends JFrame
 	Image grid;
 	
 	public Exec(){
-		test = new BattleShip(400,350,30,1);
-		test2 = new BattleShip(400,250,30,2);
+		test = new BattleShip(400,350,1);
+		test2 = new BattleShip(400,250,2);
 		init();
 	}
 	public void init()
@@ -25,7 +25,7 @@ public class Exec extends JFrame
 		Graphics gs = grid.getGraphics();
 		gs.setColor(Color.black);
 		for (int x = 0; x < 800; x += 50) {
-			gs.drawLine(x,0,x,600);
+			gs.drawLine(x+25,0,x+25,600);
 		}
 		for (int y = 0; y < 600; y += 50){
 			gs.drawLine(0,y,800,y);
@@ -66,8 +66,8 @@ public class Exec extends JFrame
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_HOME){
-					test = new BattleShip(400,350,30,1);
-					test2 = new BattleShip(400,250,30,2);
+					test = new BattleShip(400,350,1);
+					test2 = new BattleShip(400,250,2);
 					repaint();
 				}
 			}

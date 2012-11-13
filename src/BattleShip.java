@@ -15,10 +15,10 @@ public class BattleShip {
 	
 	private int color;
 	
-	public BattleShip(int x, int y,int size,int color){
+	public BattleShip(int x, int y,int color){
 		this.x=x;
 		this.y=y;
-		this.size = size;
+		size = 15;
 		this.color=color;
 		guns = new ArrayList<Turret>();
 		initArray();
@@ -89,7 +89,6 @@ public class BattleShip {
 		//x and y are the center of the ship
 		
 		//Bow
-		g.setColor(new Color(255,211,155));
 		g.setColor(Color.gray.brighter());
 		g.fillArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
 		g.setColor(Color.black);
@@ -103,7 +102,6 @@ public class BattleShip {
 		g.drawArc(x+((size*2)+(size/6)),y-(size-(size/6)),(size*3)+(size/3),(size*2)-(size/3),270,180);
 		
 		//Deck
-		g.setColor(new Color(255,211,155));
 		g.setColor(Color.black);
 		g.drawRect(x-((size*4)-(size/6)),y-(size-(size/6)),(size*8)-(size/3),(size*2)-(size/3));
 		g.setColor(Color.gray.brighter());
