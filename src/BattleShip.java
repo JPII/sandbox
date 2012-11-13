@@ -24,23 +24,23 @@ public class BattleShip extends JFrame
 			@Override
 			public void keyPressed(KeyEvent k) {
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-					test.setX(test.getX()-50);
-					test2.setX(test2.getX()-50);
+					test.addX(-50);
+					test2.addX(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-					test.setX(test.getX()+50);
-					test2.setX(test2.getX()+50);
+					test.addX(50);
+					test2.addX(50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
-					test.setY(test.getY()-50);
-					test2.setY(test2.getY()-50);
+					test.addY(-50);
+					test2.addY(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
-					test.setY(test.getY()+50);
-					test2.setY(test2.getY()+50);
+					test.addY(50);
+					test2.addY(50);
 					repaint();
 				}
 			}
@@ -88,9 +88,6 @@ public class BattleShip extends JFrame
 		test.drawShip(g);
 		test2.drawShip(g);
 		g2.drawImage(i,0,0,this);
-		if (test.moving || test2.moving){
-			repaint();
-		}
 	}
 	public void update(Graphics g) {
 		paint(g);
