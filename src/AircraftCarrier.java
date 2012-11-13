@@ -32,37 +32,25 @@ public class AircraftCarrier {
 	{	
 		//x and y are the center of the ship
 		
-		//Bow
+		//Upper Deck
 		g.setColor(Color.gray.brighter());
-		
+		int xarray[] = {x-150,x-50,x-15,x+65,x+80,x+150,x+150,x-150};
+		int yarray[] = {y-25,y-25,y-65,y-70,y-25,y-25,y+25,y+25};
+		g.fillPolygon(xarray,yarray,8);
 		g.setColor(Color.black);
+		g.drawPolygon(xarray,yarray,8);
 		
-		
-		//Stern
-		g.setColor(Color.gray.brighter());
-		
-		g.setColor(Color.black);
-		
-		
-		//Deck
-		g.setColor(Color.black);
-		
-		g.setColor(Color.gray.brighter());
+		//lines
+		g.setColor(Color.yellow);
+		for(int q = x-145; q <= x+145; q += 30)
+			g.fillRect(q, y, 20, 3);
 		
 		
 		//Command Center
 		g.setColor(getColor().darker().darker());
-		g.fillRect(x-((30*2)-(30/3)),y-((30/2)-(30/30)),((30*2)+(30/3)),30);
+		g.fillRect(x+40,y+7,15,15);
 		g.setColor(getColor().darker());
-		g.fillRect(x-(30+(30/6)),y-((30/2)+(30/10)),30/6,30+(30/3));
-		g.fillRect(x-(30+(30/3)),y-(30/3),30/6,(30-(30/3))+(30/30));
-		g.fillRect(x-(30/2),y-((30/6)+(30/10)+(30/30)),30,30-(30/3));
-		g.setColor(getColor());
-		g.fillArc(x-(30-(30/6)),y-((30/6)+(30/10)+(30/30)),30-(30/3),30-(30/3),90,180);
-		g.setColor(getColor().darker());
-		int xarray[] = {x-(30/2),x-(30-(30/6)),x-(30/2),x-(30/2)};
-		int yarray[] = {y-((30/6)+(30/10)+(30/30)),y+(30/15),y+(30/3)+(30/15),y-((30/6)+(30/10)+(30/30))};
-		g.fillPolygon(xarray,yarray,4);
+		g.fillRect(x+45,y+5,3,20);		
 	}
 	
 	private Color getColor(){

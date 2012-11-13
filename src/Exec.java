@@ -12,11 +12,16 @@ public class Exec extends JFrame
 	BattleShip test;
 	BattleShip test2;
 	
+	AircraftCarrier ac;
+	AircraftCarrier ac2;
+	
 	Image grid;
 	
 	public Exec(){
 		test = new BattleShip(400,350,1);
 		test2 = new BattleShip(400,250,2);
+		ac = new AircraftCarrier(400,150,1);
+		ac2 = new AircraftCarrier(400,450,2);
 		init();
 	}
 	public void init()
@@ -68,6 +73,8 @@ public class Exec extends JFrame
 				if(k.getKeyCode() == KeyEvent.VK_HOME){
 					test = new BattleShip(400,350,1);
 					test2 = new BattleShip(400,250,2);
+					ac = new AircraftCarrier(400,150,1);
+					ac2 = new AircraftCarrier(400,450,2);
 					repaint();
 				}
 			}
@@ -118,6 +125,8 @@ public class Exec extends JFrame
 		g.drawString("Up moves the ship up", 50, 175);
 		test.drawShip(g);
 		test2.drawShip(g);
+		ac.drawShip(g);
+		ac2.drawShip(g);
 		g2.drawImage(i,0,0,this);
 		if(needsRepaint())
 			repaint();
