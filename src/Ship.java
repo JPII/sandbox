@@ -4,6 +4,7 @@ import java.util.*;
 public class Ship {
 	
 	private int x,y;
+	private int size;
 	
 	public final int NORTH = 0;
 	public final int SOUTH = 180;
@@ -14,12 +15,13 @@ public class Ship {
 	
 	private int color;
 	
-	public Ship(int x, int y,int color){
+	public Ship(int x, int y,int size,int color){
 		this.x=x;
 		this.y=y;
+		this.size = size;
+		this.color=color;
 		guns = new ArrayList<Turret>();
 		initArray();
-		this.color=color;
 	}
 	
 	private void initArray(){
@@ -41,6 +43,9 @@ public class Ship {
 			guns.get(index).addY(y);
 		}
 	}
+	public void addSize(int s){
+		this.size+=s;
+	}
 	public int getX(){
 		return x;
 	}
@@ -53,7 +58,7 @@ public class Ship {
 		}
 	}
 	
-	public void drawShip(Graphics g, int size){
+	public void drawShip(Graphics g){
 		base(g,size);
 		drawGuns(g);
 	}

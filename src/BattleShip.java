@@ -13,8 +13,8 @@ public class BattleShip extends JFrame
 	Ship test2;
 	
 	public BattleShip(){
-		test = new Ship(400,350,1);
-		test2 = new Ship(400,250,2);
+		test = new Ship(400,350,30,1);
+		test2 = new Ship(400,250,30,2);
 		init();
 	}
 	public void init()
@@ -41,6 +41,21 @@ public class BattleShip extends JFrame
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
 					test.addY(50);
 					test2.addY(50);
+					repaint();
+				}
+				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
+					test.addSize(5);
+					test2.addSize(5);
+					repaint();
+				}
+				if(k.getKeyCode() == KeyEvent.VK_PAGE_UP){
+					test.addSize(-5);
+					test2.addSize(-5);
+					repaint();
+				}
+				if(k.getKeyCode() == KeyEvent.VK_HOME){
+					test = new Ship(400,350,30,1);
+					test2 = new Ship(400,250,30,2);
 					repaint();
 				}
 			}
@@ -85,8 +100,8 @@ public class BattleShip extends JFrame
 		g.drawString("Right moves the ship right",50, 125);
 		g.drawString("Down moves the ship down", 50, 150);
 		g.drawString("Up moves the ship up", 50, 175);
-		test.drawShip(g,30);
-		test2.drawShip(g,30);
+		test.drawShip(g);
+		test2.drawShip(g);
 		g2.drawImage(i,0,0,this);
 	}
 	public void update(Graphics g) {
