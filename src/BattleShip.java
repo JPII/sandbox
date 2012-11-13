@@ -85,8 +85,8 @@ public class BattleShip extends JFrame
 		g.drawString("Right moves the ship right",50, 125);
 		g.drawString("Down moves the ship down", 50, 150);
 		g.drawString("Up moves the ship up", 50, 175);
-		test.drawShip(g);
-		test2.drawShip(g);
+		test.drawShip(g,30);
+		test2.drawShip(g,30);
 		g2.drawImage(i,0,0,this);
 	}
 	public void update(Graphics g) {

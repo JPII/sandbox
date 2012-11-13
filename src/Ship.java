@@ -53,8 +53,8 @@ public class Ship {
 		}
 	}
 	
-	public void drawShip(Graphics g){
-		base(g);
+	public void drawShip(Graphics g, int size){
+		base(g,size);
 		drawGuns(g);
 	}
 	
@@ -64,44 +64,43 @@ public class Ship {
 		}
 	}
 	
-	private void base(Graphics g)
+	private void base(Graphics g, int size)
 	{	
 		//x and y are the center of the ship
-		//size will be in increments of 5
 		
 		//Bow
 		g.setColor(new Color(255,211,155));
 		g.setColor(Color.gray.brighter());
-		g.fillArc((x-125)-115,y-25,250,50,90,180);
+		g.fillArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
 		g.setColor(Color.black);
-		g.drawArc((x-125)-115,y-25,250,50,90,180);
+		g.drawArc(x-(size*8),y-(size-(size/6)),(size*8)+(size/3),(size*2)-(size/3),90,180);
 		
 		//Stern
 		g.setColor(new Color(255,211,155));
 		g.setColor(Color.gray.brighter());
-		g.fillArc((x+180)-115,y-25,100,50,270,180);
+		g.fillArc(x+((size*2)+(size/6)),y-(size-(size/6)),(size*3)+(size/3),(size*2)-(size/3),270,180);
 		g.setColor(Color.black);
-		g.drawArc((x+180)-115,y-25,100,50,270,180);
+		g.drawArc(x+((size*2)+(size/6)),y-(size-(size/6)),(size*3)+(size/3),(size*2)-(size/3),270,180);
 		
 		//Deck
 		g.setColor(new Color(255,211,155));
 		g.setColor(Color.black);
-		g.drawRect(x-115,y-25,230,50);
+		g.drawRect(x-((size*4)-(size/6)),y-(size-(size/6)),(size*8)-(size/3),(size*2)-(size/3));
 		g.setColor(Color.gray.brighter());
-		g.fillRect(x-115,y-24,231,49);
+		g.fillRect(x-((size*4)-(size/6)),y-((size-(size/6))-1),(size*8)-(size/3)+1,(size*2)-(size/3)-1);
 		
 		//Command Center
 		g.setColor(getColor().darker().darker());
-		g.fillRect(x-50,y-14,70,30);
+		g.fillRect(x-((size*2)-(size/3)),y-((size/2)-(size/size)),((size*2)+(size/3)),size);
 		g.setColor(getColor().darker());
-		g.fillRect(x-35,y-18,5,40);
-		g.fillRect(x-40,y-10,5,21);
-		g.fillRect(x-15,y-9,30,20);
+		g.fillRect(x-(size+(size/6)),y-((size/2)+(size/10)),size/6,size+(size/3));
+		g.fillRect(x-(size+(size/3)),y-(size/3),size/6,(size-(size/3))+(size/size));
+		g.fillRect(x-(size/2),y-((size/6)+(size/10)+(size/size)),size,size-(size/3));
 		g.setColor(getColor());
-		g.fillArc(x-25,y-10,20,20,90,180);
+		g.fillArc(x-(size-(size/6)),y-(size/3),size-(size/3),size-(size/3),90,180);
 		g.setColor(getColor().darker());
-		int xarray[] = {x-15,x-25,x-15,x-15};
-		int yarray[] = {y-9,y+1,y+10,y-9};
+		int xarray[] = {x-(size/2),x-(size-(size/6)),x-(size/2),x-(size/2)};
+		int yarray[] = {y-((size/3)-(size/size)),y+(size/size),y+(size/3),y-((size/3)-(size/size))};
 		g.fillPolygon(xarray,yarray,4);
 	}
 	
