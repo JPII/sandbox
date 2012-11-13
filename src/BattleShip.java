@@ -35,22 +35,22 @@ public class BattleShip extends JFrame
 		this.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent k) {
-				if(k.getKeyCode() == KeyEvent.VK_LEFT||k.getKeyCode() == KeyEvent.VK_A){
+				if(k.getKeyCode() == KeyEvent.VK_LEFT){
 					test.addX(-50);
 					test2.addX(-50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_RIGHT||k.getKeyCode() == KeyEvent.VK_D){
+				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
 					test.addX(50);
 					test2.addX(50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_UP||k.getKeyCode() == KeyEvent.VK_W){
+				if(k.getKeyCode() == KeyEvent.VK_UP){
 					test.addY(-50);
 					test2.addY(-50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_DOWN||k.getKeyCode() == KeyEvent.VK_S){
+				if(k.getKeyCode() == KeyEvent.VK_DOWN){
 					test.addY(50);
 					test2.addY(50);
 					repaint();
@@ -78,7 +78,9 @@ public class BattleShip extends JFrame
 			public void keyTyped(KeyEvent arg0) {
 			}
 		});
-		
+		MouseListener mouse = new MouseAdapter() {public void mousePressed(MouseEvent e){mousePressed2(e);}
+		public void mouseReleased(MouseEvent e){mouseReleased2(e);}};
+		this.addMouseListener(mouse);
 		MouseMotionListener mouse1 = new MouseAdapter() {public void mouseMoved(MouseEvent md){mouseM(md);}};
 		this.addMouseMotionListener(mouse1);
 
@@ -116,6 +118,8 @@ public class BattleShip extends JFrame
 		test.drawShip(g);
 		test2.drawShip(g);
 		g2.drawImage(i,0,0,this);
+		if(needsRepaint())
+			repaint();
 	}
 	public void update(Graphics g) {
 		paint(g);
@@ -124,11 +128,36 @@ public class BattleShip extends JFrame
 	public void delay(int n){
 		try {Thread.sleep(n);} catch (Exception e) {System.out.println("Sleep failed");}
 	}	
+	public boolean needsRepaint(){
+		return(test.needsRepaint() || test2.needsRepaint());
+	}
+	
+	
 	public void mouseM(MouseEvent e){
     	int x = e.getX();
     	int y = e.getY();
-    	test.giveXandY(x,y);
-    	test2.giveXandY(x,y);
+    	test.MouseMoved(x,y);
+    	test2.MouseMoved(x,y);
     	repaint();
     }	
+	public void mouseReleased2(MouseEvent e)
+	{
+		repaint();
+	}
+	public void mousePressed2(MouseEvent e)
+    {
+    	int x = e.getX();
+    	int y = e.getY();
+    	test.MouseClicked(x,y);
+    	test2.MouseClicked(x,y);
+    	repaint();
+    }
+	public void mouseDrag(MouseEvent e)
+    {
+    	int x = e.getX();
+    	int y = e.getY();
+    	test.MouseMoved(x,y);
+    	test2.MouseMoved(x,y);
+    	repaint();
+    }
 }

@@ -55,12 +55,24 @@ public class Ship {
 	public int getY(){
 		return y;
 	}
-	public void giveXandY(int x, int y){
+	public void MouseMoved(int x, int y){
 		for(int index = 0; index<guns.size(); index++){
-			guns.get(index).giveXandY(x,y);
+			guns.get(index).MouseMoved(x,y);
 		}
 	}
-	
+	public void MouseClicked(int x, int y){
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).MouseClicked(x,y);
+		}
+	}
+	public boolean needsRepaint(){
+		for(int index = 0; index<guns.size();index++){
+			if(guns.get(index).needsRepaint()){
+				return true;
+			}
+		}
+		return false;
+	}
 	public void drawShip(Graphics g){
 		base(g,size);
 		drawGuns(g);

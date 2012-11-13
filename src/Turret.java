@@ -1,5 +1,5 @@
-import java.awt.Color;
-import java.awt.Graphics;
+import java.util.*;
+import java.awt.*;
 
 
 public class Turret {
@@ -14,6 +14,10 @@ public class Turret {
 	private int gunSize;
 	private int desrotation;
 	
+	private boolean moving;
+	
+	private ArrayList<Bullet> bullets;
+	
 	public Turret() {}
 	
 	public Turret(int x, int y, int max, int min, int size, int shipRotation){
@@ -25,10 +29,15 @@ public class Turret {
 		this.shipRotation = shipRotation;
 		this.size = size;
 		gunSize = 4;
+		bullets = new ArrayList<Bullet>();
+		moving = false;
 	}
 	
-	public void giveXandY(int x, int y){
+	public void MouseMoved(int x, int y){
 		rotation = getAngle(x,y);
+	}
+	public void MouseClicked(int x, int y){
+		fireGun(x,y);
 	}
 	public void addX(int x){
 		centerx+=x;
@@ -39,6 +48,15 @@ public class Turret {
 	public void addSize(int s){
 		size+=s;
 	}
+	public boolean needsRepaint(){
+		if (moving)
+			return true;
+		for(int index=0; index<bullets.size(); index++){
+			if(bullets.get(index).needsRepaint())
+				return true;
+		}
+		return false;
+	}
 	
 	private int getAngle(int x, int y){
 		double ycomp = centery-y;
@@ -48,6 +66,11 @@ public class Turret {
     	if(xcomp<0)
     		theta+=180;
     	return (int) theta;
+	}
+	
+	public void fireGun(int x, int y){
+		bullets.add(new Bullet(centerx,centery,x,y));
+		bullets.add(new Bullet(centerx,centery,x,y));
 	}
 	
 	@SuppressWarnings("unused")
@@ -90,6 +113,10 @@ public class Turret {
 		
 		int xarray3[] = {xarray[3]+getCos(size/3,rotation),xarray[3]+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/gunSize,rotation)+getCos(size/3-size/6,rotation),xarray[3]-getSin(size-size/gunSize,rotation)+getCos(size/3,rotation)};
 		int yarray3[] = {yarray[3]+getSin(size/3,rotation),yarray[3]+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/gunSize,rotation)+getSin(size/3-size/6,rotation),yarray[3]+getCos(size-size/gunSize,rotation)+getSin(size/3,rotation)};
-		g.fillPolygon(xarray3,yarray3,4);		
+		g.fillPolygon(xarray3,yarray3,4);
+		
+		for(int index=0; index<bullets.size(); index++){
+			bullets.get(index).drawBullet(g);
+		}
 	}
 }
