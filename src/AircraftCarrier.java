@@ -34,23 +34,22 @@ public class AircraftCarrier {
 		
 		//Upper Deck
 		g.setColor(Color.gray.brighter());
-		int xarray[] = {x-150,x-50,x-15,x+65,x+80,x+150,x+150,x-150};
-		int yarray[] = {y-25,y-25,y-65,y-70,y-25,y-25,y+25,y+25};
+		int xarray[] = {x-150, x-100, x-75, x+100, x+150, x+150, x-150, x-150};
+		int yarray[] = {y-10,  y-10,  y-25, y-25,  y-10,  y+25,  y+25,  y-10};
 		g.fillPolygon(xarray,yarray,8);
 		g.setColor(Color.black);
 		g.drawPolygon(xarray,yarray,8);
 		
 		//lines
 		g.setColor(Color.yellow);
-		for(int q = x-145; q <= x+145; q += 30)
-			g.fillRect(q, y, 20, 3);
-		
+		for(int q = x-145; q <= x+145; q += 25)
+			g.fillRect(q,y+5,18,3);
 		
 		//Command Center
-		g.setColor(getColor().darker().darker());
-		g.fillRect(x+40,y+7,15,15);
 		g.setColor(getColor().darker());
-		g.fillRect(x+45,y+5,3,20);		
+		g.fillRect(x+85,y-23,15,15);
+		g.setColor(getColor());
+		g.fillRect(x+90,y-25,2,20);		
 	}
 	
 	private Color getColor(){

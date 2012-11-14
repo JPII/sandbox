@@ -22,8 +22,8 @@ public class Exec extends JFrame
 	public Exec(){
 		test = new BattleShip(400,350,1);
 		test2 = new BattleShip(400,250,2);
-		ac = new AircraftCarrier(400,150,1);
-		ac2 = new AircraftCarrier(400,450,2);
+		ac = new AircraftCarrier(383,155,1);
+		ac2 = new AircraftCarrier(383,455,2);
 		init();
 	}
 	public void init()
