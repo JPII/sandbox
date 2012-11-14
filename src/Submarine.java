@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Submarine {
 
-	private int x,y;
+	private int centerx, centery;
 	
 	public final int NORTH = 0;
 	public final int SOUTH = 180;
@@ -12,16 +12,22 @@ public class Submarine {
 	private int color;
 	
 	public Submarine(int x, int y,int color){
-		this.x=x;
-		this.y=y;
+		centerx=x;
+		centery=y;
 		this.color=color;
 	}
 	
 	public int getX(){
-		return x;
+		return centerx;
 	}
 	public int getY(){
-		return y;
+		return centery;
+	}
+	public void addX(int x){
+		centerx += x;
+	}
+	public void addY(int y){
+		centery += y;
 	}
 
 	public void drawShip(Graphics g){
@@ -34,15 +40,15 @@ public class Submarine {
 		
 		//Body
 		g.setColor(Color.gray.brighter());
-		g.fillOval(x, y, 25, 115);
+		g.fillOval(centerx, centery, 25, 115);
 		g.setColor(Color.black);
-		g.drawOval(x, y, 25, 115);	
+		g.drawOval(centerx, centery, 25, 115);	
 				
 		//Command Center
 		g.setColor(getColor().darker().darker());
-		g.fillOval(x+5, y+40, 15, 15);
+		g.fillOval(centerx+5, centery+40, 15, 15);
 		g.setColor(getColor().darker());
-		g.fillRect(x, y+46, 25, 3);
+		g.fillRect(centerx, centery+46, 25, 3);
 	}
 	
 	private Color getColor(){

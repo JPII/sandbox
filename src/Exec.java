@@ -50,21 +50,37 @@ public class Exec extends JFrame
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
 					test.addX(-50);
 					test2.addX(-50);
+					ac.addX(-50);
+					ac2.addX(-50);
+					s.addX(-50);
+					s2.addX(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
 					test.addX(50);
 					test2.addX(50);
+					ac.addX(50);
+					ac2.addX(50);
+					s.addX(50);
+					s2.addX(50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
 					test.addY(-50);
 					test2.addY(-50);
+					ac.addY(-50);
+					ac2.addY(-50);
+					s.addY(-50);
+					s2.addY(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
 					test.addY(50);
 					test2.addY(50);
+					ac.addY(50);
+					ac2.addY(50);
+					s.addY(50);
+					s2.addY(50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
