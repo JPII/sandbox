@@ -17,6 +17,9 @@ public class Exec extends JFrame
 	AircraftCarrier ac;
 	AircraftCarrier ac2;
 	
+	Submarine s;
+	Submarine s2;
+	
 	Image grid;
 	
 	public Exec(){
@@ -24,6 +27,8 @@ public class Exec extends JFrame
 		test2 = new BattleShip(400,250,2);
 		ac = new AircraftCarrier(383,155,1);
 		ac2 = new AircraftCarrier(383,455,2);
+		s = new Submarine(600,300,1);
+		s2 = new Submarine(200,300,2);
 		init();
 	}
 	public void init()
@@ -136,6 +141,8 @@ public class Exec extends JFrame
 		ac2.drawShip(g);
 		test.drawShip(g,g);
 		test2.drawShip(g,g);
+		s.drawShip(g);
+		s2.drawShip(g);
 		g.drawImage(i2,0,0,this);
 		g2.drawImage(i,0,0,this);
 		if(needsRepaint())
