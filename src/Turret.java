@@ -8,8 +8,7 @@ public class Turret {
 	private int rotation;
 	private int shipRotation;
 	private int maxRotation;
-	@SuppressWarnings("unused")
-	private int minRotation;
+	//private int minRotation;
 	private int size;
 	private int gunSize;
 	private int desrotation;
@@ -24,7 +23,7 @@ public class Turret {
 		centerx = x;
 		centery = y;
 		maxRotation = max;
-		minRotation = min;
+		//minRotation = min;
 		rotation = 0;
 		this.shipRotation = shipRotation;
 		this.size = size;
@@ -94,7 +93,7 @@ public class Turret {
 		return (int) (size*Math.sin(Math.toRadians(gunRotation)));
 	}
 	
-	public void drawGun(Graphics g,Graphics g3) {
+	public void drawGun(Graphics g) {
 		int cvalue = getCos(size,rotation);
 		int svalue = getSin(size,rotation);		 
 		int yoffset = (cvalue+svalue)/2;
@@ -115,7 +114,7 @@ public class Turret {
 		g.fillPolygon(xarray3,yarray3,4);
 		
 		for(int index=0; index<bullets.size(); index++){
-			bullets.get(index).drawBullet(g3);
+			bullets.get(index).drawBullet(g);
 		}
 		for(int index=0; index<bullets.size(); index++){
 			if(bullets.get(index).isdone()){

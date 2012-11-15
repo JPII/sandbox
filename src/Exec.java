@@ -71,16 +71,6 @@ public class Exec extends JFrame
 					s.addY(50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
-					test.addSize(5);
-					test2.addSize(5);
-					repaint();
-				}
-				if(k.getKeyCode() == KeyEvent.VK_PAGE_UP){
-					test.addSize(-5);
-					test2.addSize(-5);
-					repaint();
-				}
 				if(k.getKeyCode() == KeyEvent.VK_HOME){
 					test = new BattleShip(400,350,1);
 					test2 = new BattleShip(400,250,2);
@@ -143,8 +133,8 @@ public class Exec extends JFrame
 		g.drawString("Up moves the ship up", 50, 175);
 		
 		ac.drawShip(g);
-		test.drawShip(g,g);
-		test2.drawShip(g,g);
+		test.drawShip(g);
+		test2.drawShip(g);
 		s.drawShip(g);
 		
 		g.drawImage(i2,0,0,this);

@@ -1,10 +1,9 @@
 import java.awt.*;
 
-public class AircraftCarrier extends BattleShip{
+public class AircraftCarrier extends Ship{
 	
 	public AircraftCarrier(int x, int y,int color){
-		super(x,y);
-		this.color = color;
+		super(x,y,color);
 	}
 
 	public void drawShip(Graphics g){
@@ -33,5 +32,14 @@ public class AircraftCarrier extends BattleShip{
 		g.fillRect(x+85,y-23,15,15);
 		g.setColor(getColor());
 		g.fillRect(x+90,y-25,2,20);		
+	}
+
+	public void MouseMoved(int x, int y) {	
+	}
+
+	public void MouseClicked(int x, int y) {
+	}
+
+	protected void base(Graphics g, int size) {
 	}
 }

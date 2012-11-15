@@ -1,64 +1,30 @@
 import java.awt.*;
 import java.util.*;
 
-public class BattleShip {
-	
-	protected int x,y;
-	protected int size;
-	
-	public final int NORTH = 0;
-	public final int SOUTH = 180;
-	public final int EAST = 270;
-	public final int WEST = 90;
-	
+public class BattleShip extends Ship {
 	private ArrayList<Turret> guns;
-	
-	protected int color;
-	
 	public BattleShip(int x, int y,int color){
-		this.x=x;
-		this.y=y;
-		size = 15;
-		this.color=color;
+		super(x,y,color);
 		guns = new ArrayList<Turret>();
 		initArray();
-	}
-	public BattleShip(int x, int y){
-		this.x=x;
-		this.y=y;
-		size = 15;
-	}
-	
+	}	
 	private void initArray(){
 		guns.add(new Turret(x-((size*3)+(size/3)),y,270,0,size,WEST));
 		guns.add(new Turret(x-((size*6)-(size/3)),y,270,0,size,WEST));
 		guns.add(new Turret(x+((size*2)-(size/3)),y,270,0,size,WEST));
 		guns.add(new Turret(x+((size*3)+(size/3)),y,270,0,size,WEST));
 	}
-	
 	public void addX(int x){
-		this.x+=x;
+		super.addX(x);
 		for(int index = 0; index<guns.size(); index++){
 			guns.get(index).addX(x);
 		}
 	}
 	public void addY(int y){
-		this.y+=y;
+		super.addY(y);
 		for(int index = 0; index<guns.size(); index++){
 			guns.get(index).addY(y);
 		}
-	}
-	public void addSize(int s){
-		this.size+=s;
-		for(int index = 0; index<guns.size(); index++){
-			guns.get(index).addSize(s);
-		}
-	}
-	public int getX(){
-		return x;
-	}
-	public int getY(){
-		return y;
 	}
 	public void MouseMoved(int x, int y){
 		for(int index = 0; index<guns.size(); index++){
@@ -71,6 +37,9 @@ public class BattleShip {
 		}
 	}
 	public boolean needsRepaint(){
+		if(super.needsRepaint()){
+			return true;
+		}
 		for(int index = 0; index<guns.size();index++){
 			if(guns.get(index).needsRepaint()){
 				return true;
@@ -78,14 +47,14 @@ public class BattleShip {
 		}
 		return false;
 	}
-	public void drawShip(Graphics g,Graphics g3){
+	public void drawShip(Graphics g){
 		base(g,size);
-		drawGuns(g,g3);
+		drawGuns(g);
 	}
 	
-	private void drawGuns(Graphics g,Graphics g3){
+	private void drawGuns(Graphics g){
 		for(int index = 0; index<guns.size(); index++){
-			guns.get(index).drawGun(g,g3);
+			guns.get(index).drawGun(g);
 		}
 	}
 	
@@ -126,13 +95,5 @@ public class BattleShip {
 		
 		g.setColor(Color.blue);
 		g.fillRect(x, y,1,1);
-	}
-	
-	protected Color getColor(){
-		switch(color){
-			case 1: return Color.green;
-			case 2: return Color.red;
-			default: return null;
-		}
 	}
 }
