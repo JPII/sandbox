@@ -3,8 +3,8 @@ import java.util.*;
 
 public class BattleShip {
 	
-	private int x,y;
-	private int size;
+	protected int x,y;
+	protected int size;
 	
 	public final int NORTH = 0;
 	public final int SOUTH = 180;
@@ -13,7 +13,7 @@ public class BattleShip {
 	
 	private ArrayList<Turret> guns;
 	
-	private int color;
+	protected int color;
 	
 	public BattleShip(int x, int y,int color){
 		this.x=x;
@@ -22,6 +22,11 @@ public class BattleShip {
 		this.color=color;
 		guns = new ArrayList<Turret>();
 		initArray();
+	}
+	public BattleShip(int x, int y){
+		this.x=x;
+		this.y=y;
+		size = 15;
 	}
 	
 	private void initArray(){
@@ -84,7 +89,7 @@ public class BattleShip {
 		}
 	}
 	
-	private void base(Graphics g, int size)
+	public void base(Graphics g, int size)
 	{	
 		//x and y are the center of the ship
 		//Bow
@@ -120,7 +125,7 @@ public class BattleShip {
 		g.fillPolygon(xarray,yarray,4);
 	}
 	
-	private Color getColor(){
+	protected Color getColor(){
 		switch(color){
 			case 1: return Color.green;
 			case 2: return Color.red;

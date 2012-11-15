@@ -15,10 +15,8 @@ public class Exec extends JFrame
 	BattleShip test2;
 	
 	AircraftCarrier ac;
-	AircraftCarrier ac2;
 	
 	Submarine s;
-	Submarine s2;
 	
 	Image grid;
 	
@@ -26,9 +24,7 @@ public class Exec extends JFrame
 		test = new BattleShip(400,350,1);
 		test2 = new BattleShip(400,250,2);
 		ac = new AircraftCarrier(383,155,1);
-		ac2 = new AircraftCarrier(383,455,2);
-		s = new Submarine(600,300,1);
-		s2 = new Submarine(200,300,2);
+		s = new Submarine(383,455,2);
 		init();
 	}
 	public void init()
@@ -51,36 +47,28 @@ public class Exec extends JFrame
 					test.addX(-50);
 					test2.addX(-50);
 					ac.addX(-50);
-					ac2.addX(-50);
 					s.addX(-50);
-					s2.addX(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
 					test.addX(50);
 					test2.addX(50);
 					ac.addX(50);
-					ac2.addX(50);
 					s.addX(50);
-					s2.addX(50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
 					test.addY(-50);
 					test2.addY(-50);
 					ac.addY(-50);
-					ac2.addY(-50);
 					s.addY(-50);
-					s2.addY(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
 					test.addY(50);
 					test2.addY(50);
 					ac.addY(50);
-					ac2.addY(50);
 					s.addY(50);
-					s2.addY(50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
@@ -97,7 +85,7 @@ public class Exec extends JFrame
 					test = new BattleShip(400,350,1);
 					test2 = new BattleShip(400,250,2);
 					ac = new AircraftCarrier(400,150,1);
-					ac2 = new AircraftCarrier(400,450,2);
+					s = new Submarine(383,455,2);
 					repaint();
 				}
 			}
@@ -153,12 +141,12 @@ public class Exec extends JFrame
 		g.drawString("Right moves the ship right",50, 125);
 		g.drawString("Down moves the ship down", 50, 150);
 		g.drawString("Up moves the ship up", 50, 175);
+		
 		ac.drawShip(g);
-		ac2.drawShip(g);
 		test.drawShip(g,g);
 		test2.drawShip(g,g);
 		s.drawShip(g);
-		s2.drawShip(g);
+		
 		g.drawImage(i2,0,0,this);
 		g2.drawImage(i,0,0,this);
 		if(needsRepaint())
