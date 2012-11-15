@@ -1,4 +1,4 @@
-import java.awt.Graphics;
+import java.awt.*;
 
 
 public class Missle extends Bullet{
@@ -18,25 +18,21 @@ public class Missle extends Bullet{
 	}
 	
 	protected void increaseX(int ammount){
-		double xdistance = endx-startx;
-		double ydistance = endy-starty;
-		double theta = Math.atan(ydistance/xdistance);
-		if(xdistance < 0 ){
-			theta+=Math.PI;
-		}
-		double x = (count)*Math.cos(theta);
-		double y = (count)*Math.sin(theta);
-		currentx=(int)(x+startx);
-		currenty=(int)(y+starty);
-		count+=4;
+		super.increaseX(ammount);
+		count+=2;
 		distance+=4;
 	}
 	
 	public void drawBullet(Graphics g){
 		super.drawBullet(g);
-		if(distance>1000){
+		if(distance>2000){
 			finished();
 		}
+	}
+	
+	public void drawBull(Graphics g){
+		g.setColor(Color.blue);
+		super.drawBull(g);
 	}
 	
 	protected boolean isnearX(){

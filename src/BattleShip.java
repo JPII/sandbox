@@ -70,15 +70,15 @@ public class BattleShip extends Ship {
 		
 		//Stern
 		g.setColor(Color.gray.brighter());
-		g.fillArc(x+153,y-13,50,25,270,180);
+		g.fillArc(x+150,y-13,50,25,270,180);
 		g.setColor(Color.black);
-		g.drawArc(x+153,y-13,50,25,270,180);
+		g.drawArc(x+150,y-13,50,25,270,180);
 		
 		//Deck
 		g.setColor(Color.black);
-		g.drawRect(x+62,y-13,115,25);
+		g.drawRect(x+62,y-13,112,25);
 		g.setColor(Color.gray.brighter());
-		g.fillRect(x+62,y-12,116,24);
+		g.fillRect(x+62,y-12,113,24);
 		
 		//Command Center
 		g.setColor(getColor().darker().darker());

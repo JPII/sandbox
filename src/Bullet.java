@@ -49,6 +49,7 @@ public class Bullet {
 			increaseX(-1);
 		if(endx>currentx)
 			increaseX(1);
+		g.setColor(Color.gray);
 		drawBull(g);
 		if(isnearX()){
 			moving=true;
@@ -63,7 +64,6 @@ public class Bullet {
 	}
 	
 	public void drawBull(Graphics g){
-		g.setColor(Color.gray);
 		g.fillOval(currentx-2, currenty-2, 5, 5);
 	}
 	

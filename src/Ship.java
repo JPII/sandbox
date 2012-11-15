@@ -14,7 +14,7 @@ public abstract class Ship {
 	
 	public Ship(int x, int y,int color){
 		this.x=x;
-		this.y=y;
+		this.y=y+25;
 		size = 15;
 		this.color=color;
 	}
@@ -40,8 +40,6 @@ public abstract class Ship {
 	}
 	public void drawShip(Graphics g){
 		base(g,size);
-		g.setColor(Color.blue);
-		g.fillRect(x,y,1,1);
 	}	
 	abstract protected void base(Graphics g,int size);
 	
@@ -49,6 +47,10 @@ public abstract class Ship {
 		switch(color){
 			case 1: return Color.green;
 			case 2: return Color.red;
+			case 3: return Color.cyan;
+			case 4: return Color.yellow;
+			case 5: return Color.orange;
+			
 			default: return null;
 		}
 	}

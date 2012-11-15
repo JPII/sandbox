@@ -17,9 +17,9 @@ public class Exec extends JFrame
 	public Exec(){
 		ships = new ArrayList<Ship>();
 		ships.add(new AircraftCarrier(400,150,1));
-		ships.add(new BattleShip(400,250,1));
-		ships.add(new BattleShip(400,350,2));
-		ships.add(new Submarine(400,450,2));
+		ships.add(new BattleShip(400,250,2));
+		ships.add(new BattleShip(400,350,3));
+		ships.add(new Submarine(400,450,4));
 		init();
 	}
 	public void init()
