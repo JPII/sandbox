@@ -1,30 +1,25 @@
 import java.awt.*;
 import javax.swing.*;
+import java.util.*;
 import java.awt.event.*;
 import java.awt.image.*;
 
 @SuppressWarnings("serial")
 public class Exec extends JFrame
 {
+	Image grid;
 	Image i;
 	Graphics g;
-	Image i2;
-	Graphics g3;
 	
-	BattleShip test;
-	BattleShip test2;
-	
-	AircraftCarrier ac;
-	
-	Submarine s;
-	
-	Image grid;
+	public int selected=1;
+	public ArrayList<Ship> ships;
 	
 	public Exec(){
-		test = new BattleShip(400,350,1);
-		test2 = new BattleShip(400,250,2);
-		ac = new AircraftCarrier(383,155,1);
-		s = new Submarine(383,455,2);
+		ships = new ArrayList<Ship>();
+		ships.add(new AircraftCarrier(383,155,1));
+		ships.add(new BattleShip(400,250,1));
+		ships.add(new BattleShip(400,350,2));
+		ships.add(new Submarine(383,455,2));
 		init();
 	}
 	public void init()
@@ -44,38 +39,38 @@ public class Exec extends JFrame
 			@Override
 			public void keyPressed(KeyEvent k) {
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-					test.addX(-50);
-					test2.addX(-50);
-					ac.addX(-50);
-					s.addX(-50);
+					ships.get(selected).addX(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-					test.addX(50);
-					test2.addX(50);
-					ac.addX(50);
-					s.addX(50);
+					ships.get(selected).addX(50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
-					test.addY(-50);
-					test2.addY(-50);
-					ac.addY(-50);
-					s.addY(-50);
+					ships.get(selected).addY(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_DOWN){
-					test.addY(50);
-					test2.addY(50);
-					ac.addY(50);
-					s.addY(50);
+					ships.get(selected).addY(50);
 					repaint();
 				}
+				if(k.getKeyCode() == KeyEvent.VK_PAGE_UP){
+					if(selected>0){
+						selected--;
+					}
+				}
+				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
+					if(selected<4){
+						selected++;
+					}
+				}
 				if(k.getKeyCode() == KeyEvent.VK_HOME){
-					test = new BattleShip(400,350,1);
-					test2 = new BattleShip(400,250,2);
-					ac = new AircraftCarrier(400,150,1);
-					s = new Submarine(383,455,2);
+					selected = 1;
+					ships = new ArrayList<Ship>();
+					ships.add(new BattleShip(400,350,1));
+					ships.add(new BattleShip(400,250,2));
+					ships.add(new AircraftCarrier(383,155,1));
+					ships.add(new Submarine(383,455,2));
 					repaint();
 				}
 			}
@@ -94,22 +89,15 @@ public class Exec extends JFrame
 		this.addMouseMotionListener(mouse1);
 
 		g = newBackground();
-		g3 = newForeground();
 	}
 	public void reset() {
 		g = newBackground();
-		g3 = newForeground();
 		repaint();
 	}
 	public Graphics newBackground() {
 		 i = clearBuffer();
 		 return i.getGraphics();
 	}
-	public Graphics newForeground() {
-		 i2 = clearBuffer();
-		 return i2.getGraphics();
-	}
-
 	public Image clearBuffer() {
 		return new BufferedImage(800+16, 600+38, BufferedImage.TYPE_INT_ARGB);
 	}
@@ -119,25 +107,22 @@ public class Exec extends JFrame
 		battleship.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleship.setVisible(true);
 	}
-	
-	
 	public void paint(Graphics g2){
 		g.setColor(Color.white);
 		g.fillRect(0,0,800,600);
 		
 		g.drawImage(grid, 0,0, null);
 		g.setColor(Color.black);
-		g.drawString("Left moves the ship left", 50, 100);
-		g.drawString("Right moves the ship right",50, 125);
-		g.drawString("Down moves the ship down", 50, 150);
-		g.drawString("Up moves the ship up", 50, 175);
+		g.drawString("Left moves the ship left", 55, 100);
+		g.drawString("Right moves the ship right",55, 125);
+		g.drawString("Down moves the ship down", 55, 150);
+		g.drawString("Up moves the ship up", 55, 175);
+		g.drawString("Page-Down selects the next ship", 55, 200);
+		g.drawString("Page-Up selects the previous ship", 55, 225);
 		
-		ac.drawShip(g);
-		test.drawShip(g);
-		test2.drawShip(g);
-		s.drawShip(g);
-		
-		g.drawImage(i2,0,0,this);
+		for(int index = 0; index<ships.size();index++){
+			ships.get(index).drawShip(g);
+		}	
 		g2.drawImage(i,8,32,this);
 		if(needsRepaint())
 			repaint();
@@ -150,16 +135,19 @@ public class Exec extends JFrame
 		try {Thread.sleep(n);} catch (Exception e) {System.out.println("Sleep failed");}
 	}	
 	public boolean needsRepaint(){
-		return(test.needsRepaint() || test2.needsRepaint() || s.needsRepaint());
+		for(int index = 0; index<ships.size();index++){
+			if(ships.get(index).needsRepaint()){
+				return true;
+			}
+		}	
+		return false;
 	}
 	
 	
 	public void mouseM(MouseEvent e){
     	int x = e.getX()-8;
     	int y = e.getY()-32;
-    	//test.MouseMoved(x,y);
-    	test2.MouseMoved(x,y);
-    	s.MouseMoved(x,y);
+    	ships.get(selected).MouseMoved(x,y);
     	repaint();
     }	
 	public void mouseReleased2(MouseEvent e)
@@ -170,18 +158,14 @@ public class Exec extends JFrame
     {
     	int x = e.getX()-8;
     	int y = e.getY()-32;
-    	//test.MouseClicked(x-8,y-32);
-    	//test2.MouseClicked(x,y);
-    	s.MouseClicked(x, y);
+    	ships.get(selected).MouseClicked(x,y);
     	repaint();
     }
 	public void mouseDrag(MouseEvent e)
     {
     	int x = e.getX();
     	int y = e.getY();
-    	test.MouseMoved(x,y);
-    	test2.MouseMoved(x,y);
-    	s.MouseMoved(x,y);
+    	ships.get(selected).MouseMoved(x,y);
     	repaint();
     }
 }

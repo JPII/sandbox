@@ -38,4 +38,13 @@ public class Missle extends Bullet{
 			finished();
 		}
 	}
+	
+	protected boolean isnearX(){
+		if(currentx<(int)endx+2 && currentx > (int)endx-2){
+			if(currenty<(int)endy+2 && currenty > (int)endy-2){
+				return false;
+			}
+		}
+		return true;
+	}
 }
