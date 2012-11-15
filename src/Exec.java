@@ -58,11 +58,13 @@ public class Exec extends JFrame
 					if(selected>0){
 						selected--;
 					}
+					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
-					if(selected<4){
+					if(selected<3){
 						selected++;
 					}
+					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_HOME){
 					selected = 1;
@@ -119,6 +121,7 @@ public class Exec extends JFrame
 		g.drawString("Up moves the ship up", 55, 175);
 		g.drawString("Page-Down selects the next ship", 55, 200);
 		g.drawString("Page-Up selects the previous ship", 55, 225);
+		g.drawString("Currently selected ship "+" "+ships.get(selected).getClass(),55,250);
 		
 		for(int index = 0; index<ships.size();index++){
 			ships.get(index).drawShip(g);
