@@ -37,15 +37,15 @@ public class Submarine extends Ship{
 		
 		//Body
 		g.setColor(Color.gray.brighter());
-		g.fillOval(x-115/2, y-25/2, 100, 25);
+		g.fillOval(x, y-25/2, 100, 25);
 		g.setColor(Color.black);
-		g.drawOval(x-115/2, y-25/2, 100, 25);	
+		g.drawOval(x, y-25/2, 100, 25);	
 				
 		//Command Center
 		g.setColor(getColor().darker().darker());
-		g.fillOval(x-14, y-6, 15, 15);
+		g.fillOval(x+42, y-6, 15, 15);
 		g.setColor(getColor().darker());
-		g.fillRect(x-7, y-12, 3, 25);
+		g.fillRect(x+49, y-12, 3, 25);
 		
 		for(int index=0; index<bullets.size(); index++){
 			bullets.get(index).drawBullet(g);
