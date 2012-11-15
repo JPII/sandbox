@@ -12,8 +12,8 @@ public class AircraftCarrier extends Ship{
 		
 		//Upper Deck
 		g.setColor(Color.gray.brighter());
-		int xarray[] = {x, x+50, x+125, x+250, x+300, x+300, x, x};
-		int yarray[] = {y-10,  y-10,  y-25, y-25,  y-10,  y+25,  y+25,  y-10};
+		int xarray[] = {x,x+50,x+125,x+250,x+300,x+300,x,x};
+		int yarray[] = {y-10,y-10,y-25,y-25,y-10,y+25,y+25,y-10};
 		g.fillPolygon(xarray,yarray,8);
 		g.setColor(Color.black);
 		g.drawPolygon(xarray,yarray,8);
