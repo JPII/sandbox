@@ -54,10 +54,14 @@ public class Bullet {
 			moving=true;
 		}
 		else {
-			done = true;
-			moving = false;
+			finished();
 		}
 	}
+	protected void finished(){
+		done = true;
+		moving = false;
+	}
+	
 	public void drawBull(Graphics g){
 		g.setColor(Color.gray);
 		g.fillOval(currentx-2, currenty-2, 5, 5);
@@ -65,7 +69,9 @@ public class Bullet {
 	
 	protected boolean isnearX(){
 		if(currentx<(int)endx+2 && currentx > (int)endx-2){
-			return false;
+			if(currenty<(int)endy+2 && currenty > (int)endy-2){
+				return false;
+			}
 		}
 		return true;
 	}
