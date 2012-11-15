@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Submarine extends AircraftCarrier{
+public class Submarine extends Ship{
 	
 	private ArrayList<Missle> bullets;
 	private boolean moving;
@@ -31,7 +31,7 @@ public class Submarine extends AircraftCarrier{
 		bullets.add(new Missle(this.x,this.x,x,y));
 	}
 	
-	protected void base(Graphics g)
+	protected void base(Graphics g,int size)
 	{	
 		//x and y are the center of the ship
 		

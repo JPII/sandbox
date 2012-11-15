@@ -48,7 +48,7 @@ public class BattleShip extends Ship {
 		return false;
 	}
 	public void drawShip(Graphics g){
-		base(g,size);
+		super.drawShip(g);
 		drawGuns(g);
 	}
 	
@@ -92,8 +92,5 @@ public class BattleShip extends Ship {
 		int xarray[] = {x-(size/2),x-(size-(size/6)),x-(size/2),x-(size/2)};
 		int yarray[] = {y-((size/6)+(size/10)+(size/size)),y+(size/15),y+(size/3)+(size/15),y-((size/6)+(size/10)+(size/size))};
 		g.fillPolygon(xarray,yarray,4);
-		
-		g.setColor(Color.blue);
-		g.fillRect(x, y,1,1);
 	}
 }

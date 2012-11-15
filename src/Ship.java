@@ -40,8 +40,10 @@ public abstract class Ship {
 	}
 	public void drawShip(Graphics g){
 		base(g,size);
+		g.setColor(Color.blue);
+		g.fillRect(x, y,1,1);
 	}	
-	abstract protected void base(Graphics g, int size);
+	abstract protected void base(Graphics g,int size);
 	
 	protected Color getColor(){
 		switch(color){

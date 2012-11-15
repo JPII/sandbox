@@ -5,12 +5,8 @@ public class AircraftCarrier extends Ship{
 	public AircraftCarrier(int x, int y,int color){
 		super(x,y,color);
 	}
-
-	public void drawShip(Graphics g){
-		base(g);
-	}
 	
-	protected void base(Graphics g)
+	protected void base(Graphics g,int size)
 	{	
 		//x and y are the center of the ship
 		
@@ -38,8 +34,5 @@ public class AircraftCarrier extends Ship{
 	}
 
 	public void MouseClicked(int x, int y) {
-	}
-
-	protected void base(Graphics g, int size) {
 	}
 }
