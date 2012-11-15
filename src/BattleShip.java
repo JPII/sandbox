@@ -89,7 +89,7 @@ public class BattleShip {
 		}
 	}
 	
-	public void base(Graphics g, int size)
+	protected void base(Graphics g, int size)
 	{	
 		//x and y are the center of the ship
 		//Bow
@@ -123,6 +123,9 @@ public class BattleShip {
 		int xarray[] = {x-(size/2),x-(size-(size/6)),x-(size/2),x-(size/2)};
 		int yarray[] = {y-((size/6)+(size/10)+(size/size)),y+(size/15),y+(size/3)+(size/15),y-((size/6)+(size/10)+(size/size))};
 		g.fillPolygon(xarray,yarray,4);
+		
+		g.setColor(Color.blue);
+		g.fillRect(x, y,1,1);
 	}
 	
 	protected Color getColor(){

@@ -33,7 +33,7 @@ public class Exec extends JFrame
 		Graphics gs = grid.getGraphics();
 		gs.setColor(Color.black);
 		for (int x = 0; x < 800; x += 50) {
-			gs.drawLine(x+25,0,x+25,600);
+			gs.drawLine(x,0,x,600);
 		}
 		for (int y = 0; y < 600; y += 50){
 			gs.drawLine(0,y,800,y);
@@ -135,7 +135,7 @@ public class Exec extends JFrame
 		g.setColor(Color.white);
 		g.fillRect(0,0,800,600);
 		
-		g.drawImage(grid, 8,30, null);
+		g.drawImage(grid, 0,0, null);
 		g.setColor(Color.black);
 		g.drawString("Left moves the ship left", 50, 100);
 		g.drawString("Right moves the ship right",50, 125);
@@ -148,7 +148,7 @@ public class Exec extends JFrame
 		s.drawShip(g);
 		
 		g.drawImage(i2,0,0,this);
-		g2.drawImage(i,0,0,this);
+		g2.drawImage(i,8,32,this);
 		if(needsRepaint())
 			repaint();
 	}

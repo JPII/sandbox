@@ -6,7 +6,7 @@ public class Submarine extends AircraftCarrier{
 		super(x,y,color);
 	}
 	
-	public void base(Graphics g)
+	protected void base(Graphics g)
 	{	
 		//x and y are the center of the ship
 		

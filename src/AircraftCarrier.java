@@ -11,7 +11,7 @@ public class AircraftCarrier extends BattleShip{
 		base(g);
 	}
 	
-	public void base(Graphics g)
+	protected void base(Graphics g)
 	{	
 		//x and y are the center of the ship
 		
