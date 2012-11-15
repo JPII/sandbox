@@ -1,9 +1,34 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Submarine extends AircraftCarrier{
 	
+	private ArrayList<Missle> bullets;
+	private boolean moving;
+	
 	public Submarine(int x, int y,int color){
 		super(x,y,color);
+		bullets = new ArrayList<Missle>();
+	}
+	
+	public boolean needsRepaint(){
+		if (moving)
+			return true;
+		for(int index = 0; index<bullets.size();index++){
+			if(bullets.get(index).needsRepaint()){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void MouseMoved(int x, int y){
+		for(int index = 0; index<bullets.size(); index++){
+			bullets.get(index).MouseMoved(x,y);
+		}
+	}
+	public void MouseClicked(int x, int y){
+		bullets.add(new Missle(this.x,this.x,x,y));
 	}
 	
 	protected void base(Graphics g)
@@ -21,5 +46,15 @@ public class Submarine extends AircraftCarrier{
 		g.fillOval(x-14, y-6, 15, 15);
 		g.setColor(getColor().darker());
 		g.fillRect(x-7, y-12, 3, 25);
+		
+		for(int index=0; index<bullets.size(); index++){
+			bullets.get(index).drawBullet(g);
+		}
+		for(int index=0; index<bullets.size(); index++){
+			if(bullets.get(index).isdone()){
+				bullets.remove(index);
+				moving = true;
+			}
+		}
 	}
 }

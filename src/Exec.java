@@ -160,15 +160,16 @@ public class Exec extends JFrame
 		try {Thread.sleep(n);} catch (Exception e) {System.out.println("Sleep failed");}
 	}	
 	public boolean needsRepaint(){
-		return(test.needsRepaint() || test2.needsRepaint());
+		return(test.needsRepaint() || test2.needsRepaint() || s.needsRepaint());
 	}
 	
 	
 	public void mouseM(MouseEvent e){
-    	int x = e.getX();
-    	int y = e.getY();
-    	test.MouseMoved(x,y);
+    	int x = e.getX()-8;
+    	int y = e.getY()-32;
+    	//test.MouseMoved(x,y);
     	test2.MouseMoved(x,y);
+    	s.MouseMoved(x,y);
     	repaint();
     }	
 	public void mouseReleased2(MouseEvent e)
@@ -177,10 +178,11 @@ public class Exec extends JFrame
 	}
 	public void mousePressed2(MouseEvent e)
     {
-    	int x = e.getX();
-    	int y = e.getY();
-    	test.MouseClicked(x,y);
-    	test2.MouseClicked(x,y);
+    	int x = e.getX()-8;
+    	int y = e.getY()-32;
+    	//test.MouseClicked(x-8,y-32);
+    	//test2.MouseClicked(x,y);
+    	s.MouseClicked(x, y);
     	repaint();
     }
 	public void mouseDrag(MouseEvent e)
@@ -189,6 +191,7 @@ public class Exec extends JFrame
     	int y = e.getY();
     	test.MouseMoved(x,y);
     	test2.MouseMoved(x,y);
+    	s.MouseMoved(x,y);
     	repaint();
     }
 }

@@ -1,21 +1,17 @@
 import java.awt.*;
-import java.util.*;
 
 
 public class Bullet {
-	private double startx;
-	private double endx;
-	private double starty;
-	private double endy;
-	private int currentx;
-	private int currenty;
-	private int count;
+	protected double startx;
+	protected double endx;
+	protected double starty;
+	protected double endy;
+	protected int currentx;
+	protected int currenty;
+	protected int count;
 	
-	private boolean moving;
-	private boolean done;
-	
-	@SuppressWarnings({ "rawtypes", "unused" })
-	private ArrayList particle;
+	protected boolean moving;
+	protected boolean done;
 	
 	public Bullet(int sx,int sy,int ex, int ey){
 		startx = sx;
@@ -34,7 +30,7 @@ public class Bullet {
 		return false;
 	}
 	
-	private void increaseX(int ammount){
+	protected void increaseX(int ammount){
 		double xdistance = endx-startx;
 		double ydistance = endy-starty;
 		double theta = Math.atan(ydistance/xdistance);
@@ -67,7 +63,7 @@ public class Bullet {
 		g.fillOval(currentx-2, currenty-2, 5, 5);
 	}
 	
-	private boolean isnearX(){
+	protected boolean isnearX(){
 		if(currentx<(int)endx+2 && currentx > (int)endx-2){
 			return false;
 		}
