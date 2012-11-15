@@ -31,7 +31,7 @@ public class Missle extends Bullet{
 	}
 	
 	public void drawBull(Graphics g){
-		g.setColor(Color.blue);
+		g.setColor(Color.green);
 		super.drawBull(g);
 	}
 	

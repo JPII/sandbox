@@ -1,6 +1,5 @@
 import java.awt.*;
 
-
 public class Bullet {
 	protected double startx;
 	protected double endx;
@@ -49,7 +48,7 @@ public class Bullet {
 			increaseX(-1);
 		if(endx>currentx)
 			increaseX(1);
-		g.setColor(Color.gray);
+		g.setColor(Color.yellow);
 		drawBull(g);
 		if(isnearX()){
 			moving=true;
@@ -64,7 +63,7 @@ public class Bullet {
 	}
 	
 	public void drawBull(Graphics g){
-		g.fillOval(currentx-2, currenty-2, 5, 5);
+		g.fillOval(currentx-2, currenty-2, 5, 3);
 	}
 	
 	protected boolean isnearX(){
