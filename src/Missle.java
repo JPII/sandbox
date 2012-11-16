@@ -32,7 +32,8 @@ public class Missle extends Bullet{
 	
 	public void drawBull(Graphics g){
 		g.setColor(Color.green);
-		super.drawBull(g);
+		g.fillOval(currentx-2,currenty-2,10,5);
+		g.fillRect(currentx-5,currenty-2,10,5);
 	}
 	
 	protected boolean isnearX(){
