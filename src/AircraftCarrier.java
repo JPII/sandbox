@@ -27,7 +27,7 @@ public class AircraftCarrier extends Ship{
 		g.setColor(getColor().darker());
 		g.fillRect(x+235,y-23,15,15);
 		g.setColor(getColor());
-		g.fillRect(x+240,y-25,2,20);		
+		g.fillRect(x+240,y-25,2,20);
 	}
 
 	public void MouseMoved(int x, int y) {	
