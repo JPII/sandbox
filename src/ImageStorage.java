@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import javax.imageio.*;
 
 public class ImageStorage 
@@ -9,31 +10,30 @@ public class ImageStorage
 	public Image Missile;
 	public Image Bullet;
 	public Image Jet;
-	String name,name1,name2,name3,name4,name5;
+	String s;
 	
 	public ImageStorage()
 	{
 		try{
-		name = "AircraftCarrier/AircraftCarrier.png";
-		AircraftCarrier = 
-			ImageIO.read(ImageStorage.class.getResource("../../../../NavalBattle/src/com/jpii/navalbattle/res/drawable-game"+name));
-		name1 = "BattleShip/BattleShip.png";
+		s = "AircraftCarrier/AircraftCarrier.png";
+		AircraftCarrier = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+		s = "BattleShip/BattleShip.png";
 		BattleShip = 
-			ImageIO.read(ImageStorage.class.getResource("../../../../NavalBattle/src/com/jpii/navalbattle/res/drawable-game"+name));
-		name2 = "Other/Bullet.png";
+				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+		s = "Other/Bullet.png";
 		Bullet = 
-			ImageIO.read(ImageStorage.class.getResource("../../../../NavalBattle/src/com/jpii/navalbattle/res/drawable-game"+name));
-		name3 = "Other/Missle.png";
+				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+		s = "Other/Missle.png";
 		Missile = 
-			ImageIO.read(ImageStorage.class.getResource("../../../../NavalBattle/src/com/jpii/navalbattle/res/drawable-game"+name));
-		name4 = "Plane/Jet Fighter.png";
+				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+		s = "Plane/Jet Fighter.png";
 		Jet = 
-			ImageIO.read(ImageStorage.class.getResource("../../../../NavalBattle/src/com/jpii/navalbattle/res/drawable-game"+name));
-		name5 = "Submarine/Submarine.png";
+				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+		s = "Submarine/Submarine.png";
 		Submarine = 
-			ImageIO.read(ImageStorage.class.getResource("../../../../NavalBattle/src/com/jpii/navalbattle/res/drawable-game"+name));
+				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
 		}
-		catch(Exception e){}
+		catch(Exception e){e.printStackTrace();}
 	}
 	
 	public void drawAircraftCarrier(Graphics g, int x, int y){
