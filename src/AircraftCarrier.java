@@ -1,9 +1,11 @@
 import java.awt.*;
 
 public class AircraftCarrier extends Ship{
+	ImageStorage is;
 	
 	public AircraftCarrier(int x, int y,int color){
 		super(x,y,color);
+		is = new ImageStorage();
 	}
 	
 	protected void base(Graphics g,int size)
@@ -11,7 +13,7 @@ public class AircraftCarrier extends Ship{
 		//x and y are the center of the ship
 		
 		//Upper Deck
-		g.setColor(Color.gray.brighter());
+		/*g.setColor(Color.gray.brighter());
 		int xarray[] = {x,x+50,x+125,x+250,x+300,x+300,x,x};
 		int yarray[] = {y-10,y-10,y-25,y-25,y-10,y+25,y+25,y-10};
 		g.fillPolygon(xarray,yarray,8);
@@ -27,7 +29,9 @@ public class AircraftCarrier extends Ship{
 		g.setColor(getColor().darker());
 		g.fillRect(x+235,y-23,15,15);
 		g.setColor(getColor());
-		g.fillRect(x+240,y-25,2,20);
+		g.fillRect(x+240,y-25,2,20);*/
+		
+		is.drawAircraftCarrier(g,x,y);
 	}
 
 	public void MouseMoved(int x, int y) {	
