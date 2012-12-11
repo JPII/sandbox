@@ -16,7 +16,8 @@ public class ImageStorage
 	{
 		try{
 		s = "AircraftCarrier/AircraftCarrier.png";
-		AircraftCarrier = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+		AircraftCarrier = 
+				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
 		s = "BattleShip/BattleShip.png";
 		BattleShip = 
 				ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
@@ -37,7 +38,7 @@ public class ImageStorage
 	}
 	
 	public void drawAircraftCarrier(Graphics g, int x, int y){
-		g.drawImage(AircraftCarrier,x,y,300,50,null);
+		g.drawImage(AircraftCarrier,x,y,null);
 	}
 	
 	public void drawBattleShip(Graphics g, int x, int y){

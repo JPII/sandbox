@@ -4,11 +4,13 @@ import java.util.ArrayList;
 public class Submarine extends Ship{
 	
 	private ArrayList<Missle> bullets;
+	private ImageStorage is;
 	private boolean moving;
 	
 	public Submarine(int x, int y,int color){
 		super(x,y,color);
 		bullets = new ArrayList<Missle>();
+		is = new ImageStorage();
 	}
 	
 	public boolean needsRepaint(){
@@ -34,18 +36,7 @@ public class Submarine extends Ship{
 	protected void base(Graphics g,int size)
 	{	
 		//x and y are the center of the ship
-		
-		//Body
-		g.setColor(Color.gray.brighter());
-		g.fillOval(x, y-25/2, 100, 25);
-		g.setColor(Color.black);
-		g.drawOval(x, y-25/2, 100, 25);	
-				
-		//Command Center
-		g.setColor(getColor().darker().darker());
-		g.fillOval(x+42, y-6, 15, 15);
-		g.setColor(getColor().darker());
-		g.fillRect(x+49, y-12, 3, 25);
+		is.drawSubmarine(g, x, y);
 		
 		for(int index=0; index<bullets.size(); index++){
 			bullets.get(index).drawBullet(g);

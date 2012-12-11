@@ -14,7 +14,7 @@ public abstract class Ship {
 	
 	public Ship(int x, int y,int color){
 		this.x=x;
-		this.y=y+25;
+		this.y=y;
 		size = 15;
 		this.color=color;
 	}
