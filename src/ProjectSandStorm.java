@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 /**
  * @author MKirkby
- * DO NOT DELETE UNTIL I SAY SO.
+ * DO NOT UNTIL I SAY SO.
  */
 @SuppressWarnings("serial")
 public class ProjectSandStorm extends JFrame {
