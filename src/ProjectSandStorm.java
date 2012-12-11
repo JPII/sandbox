@@ -1,20 +1,15 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
 
+import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JSlider;
-import java.awt.BorderLayout;
-import java.awt.image.BufferedImage;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.image.*;
+import java.awt.event.*;
 
 /**
  * @author MKirkby
  * DO NOT DELETE UNTIL I SAY SO.
  */
+@SuppressWarnings("serial")
 public class ProjectSandStorm extends JFrame {
 	Dirk dirk;
 	public static void main(String[] args) {
