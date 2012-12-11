@@ -36,6 +36,8 @@ public class Submarine extends Ship{
 	protected void base(Graphics g,int size)
 	{	
 		//x and y are the center of the ship
+		g.setColor(getColor());
+		g.fillRect(x+40, y+15, 20,23);
 		is.drawSubmarine(g, x, y);
 		
 		for(int index=0; index<bullets.size(); index++){
