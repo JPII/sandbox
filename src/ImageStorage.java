@@ -5,7 +5,7 @@ import javax.imageio.*;
 public class ImageStorage 
 {
 	public Image AircraftCarrier;
-	public Image BattleShip;
+	public Image BattleShip,BattleShipN,BattleShipE,BattleShipS;
 	public Image Submarine;
 	public Image Missile;
 	public Image Bullet;
@@ -15,24 +15,15 @@ public class ImageStorage
 	public ImageStorage()
 	{
 		try{
-			s = "AircraftCarrier/AircraftCarrier.png";
-			AircraftCarrier = 
-					ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
-			s = "BattleShip/BattleShip.png";
-			BattleShip = 
-					ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
-			s = "Other/Bullet.png";
-			Bullet = 
-					ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
-			s = "Other/Missle.png";
-			Missile = 
-					ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
-			s = "Plane/Jet Fighter.png";
-			Jet = 
-					ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
-			s = "Submarine/Submarine.png";
-			Submarine = 
-					ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/"+s));
+			AircraftCarrier = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/AircraftCarrier/AircraftCarrier.png"));
+			BattleShip = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShip.png"));
+			BattleShipN = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShipN.png"));
+			BattleShipE = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShipE.png"));
+			BattleShipS = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShipS.png"));
+			Bullet = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Other/Bullet.png"));
+			Missile = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Other/Missle.png"));
+			Jet = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Plane/Jet Fighter.png"));
+			Submarine = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Submarine/Submarine.png"));
 		}
 		catch(Exception e){e.printStackTrace();}
 	}
