@@ -57,6 +57,10 @@ public abstract class Ship {
 	}
 	
 	public AffineTransform rotate(double angle, double centerx, double centery) {
-		return AffineTransform.getRotateInstance(angle / 57.29577,centerx,centery);
+		AffineTransform aff = new AffineTransform();
+		aff.translate(-centerx, -centery);
+		aff.rotate(angle / 57.29577);
+		aff.translate(centerx, centery);
+		return aff;
 	}
 }
