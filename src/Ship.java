@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public abstract class Ship {
 	
@@ -53,5 +54,9 @@ public abstract class Ship {
 			
 			default: return null;
 		}
+	}
+	
+	public AffineTransform rotate(double angle, double centerx, double centery) {
+		return AffineTransform.getRotateInstance(angle / 57.29577,centerx,centery);
 	}
 }

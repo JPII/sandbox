@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 import javax.imageio.*;
 
@@ -17,9 +18,6 @@ public class ImageStorage
 		try{
 			AircraftCarrier = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/AircraftCarrier/AircraftCarrier.png"));
 			BattleShip = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShip.png"));
-			BattleShipN = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShipN.png"));
-			BattleShipE = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShipE.png"));
-			BattleShipS = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/BattleShip/BattleShipS.png"));
 			Bullet = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Other/Bullet.png"));
 			Missile = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Other/Missle.png"));
 			Jet = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Plane/Jet Fighter.png"));
@@ -32,8 +30,9 @@ public class ImageStorage
 		g.drawImage(AircraftCarrier,x,y,null);
 	}
 
-	public void drawBattleShip(Graphics g, int x, int y){
-		g.drawImage(BattleShip,x,y,null);
+	public void drawBattleShip(Graphics2D g, AffineTransform at){
+		//g.drawImage(BattleShip,x,y,null);
+		g.drawImage(BattleShip, at, null);
 	}
 
 	public void drawSubmarine(Graphics g, int x, int y){

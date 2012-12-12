@@ -63,8 +63,9 @@ public class BattleShip extends Ship {
 	protected void base(Graphics g, int size)
 	{	
 		//x and y are the center of the ship
-		g.setColor(getColor());
-		g.fillRect(x+90, y+15, 40, 20);
-		is.drawBattleShip(g,x,y);
+		//g.setColor(getColor());
+		//g.fillRect(x+90, y+15, 40, 20);
+		//is.drawBattleShip(g,x,y);
+		is.drawBattleShip((Graphics2D)g, rotate(45,x,y));
 	}
 }
