@@ -36,7 +36,9 @@ public class Submarine extends Ship{
 	protected void base(Graphics g,int size)
 	{	
 		//x and y are the center of the ship
-		is.drawSubmarine((Graphics2D)g, rotate(angle,x,y));
+		int halfcellwidth = 25;
+		int imgheight = is.BattleShip.getHeight(null);
+		is.drawSubmarine((Graphics2D)g, rotate(angle,x,y,halfcellwidth,imgheight/2));
 		
 		for(int index=0; index<bullets.size(); index++){
 			bullets.get(index).drawBullet(g);

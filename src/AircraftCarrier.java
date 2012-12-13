@@ -9,9 +9,10 @@ public class AircraftCarrier extends Ship{
 	}
 	
 	protected void base(Graphics g, int size)
-	{	
-		//x and y are the center of the ship
-		is.drawAircraftCarrier((Graphics2D)g, rotate(angle,x,y));
+	{
+		int halfcellwidth = 25;
+		int imgheight = is.AircraftCarrier.getHeight(null);
+		is.drawAircraftCarrier((Graphics2D)g, rotate(angle,x,y,halfcellwidth,imgheight/2));
 	}
 
 	public void MouseMoved(int x, int y) {	
