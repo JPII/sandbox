@@ -7,17 +7,19 @@ public abstract class Ship {
 	protected int size;
 	protected boolean moving;
 	protected int color;
+	protected double angle;
 	
 	public final int NORTH = 0;
 	public final int SOUTH = 180;
 	public final int EAST = 270;
 	public final int WEST = 90;
 	
-	public Ship(int x, int y,int color){
+	public Ship(int x, int y,int color,double angle){
 		this.x=x;
 		this.y=y;
 		size = 15;
 		this.color=color;
+		this.angle=angle;
 	}
 	public void addX(int x){
 		this.x+=x;
@@ -25,11 +27,17 @@ public abstract class Ship {
 	public void addY(int y){
 		this.y+=y;
 	}
+	public void addAngle(double angle){
+		this.angle+=angle;
+	}
 	public int getX(){
 		return x;
 	}
 	public int getY(){
 		return y;
+	}
+	public double getAngle(){
+		return angle;
 	}
 	abstract public void MouseMoved(int x, int y);
 	abstract public void MouseClicked(int x, int y);
@@ -56,11 +64,10 @@ public abstract class Ship {
 		}
 	}
 	
-	public AffineTransform rotate(double angle, double centerx, double centery) {
+	public AffineTransform rotate(double angle, double distancex, double distancey) {
 		AffineTransform aff = new AffineTransform();
-		aff.translate(-centerx, -centery);
+		aff.translate(distancex,distancey);
 		aff.rotate(angle / 57.29577);
-		aff.translate(centerx, centery);
 		return aff;
 	}
 }

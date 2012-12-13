@@ -4,8 +4,8 @@ import java.util.*;
 public class BattleShip extends Ship {
 	private ArrayList<Turret> guns;
 	private ImageStorage is;
-	public BattleShip(int x, int y,int color){
-		super(x,y,color);
+	public BattleShip(int x,int y,int color,double angle){
+		super(x,y,color,angle);
 		guns = new ArrayList<Turret>();
 		is = new ImageStorage();
 		initArray();
@@ -63,6 +63,6 @@ public class BattleShip extends Ship {
 	protected void base(Graphics g, int size)
 	{	
 		//x and y are the center of the ship
-		is.drawBattleShip((Graphics2D)g, rotate(45,20,20));
+		is.drawBattleShip((Graphics2D)g, rotate(angle,x,y));
 	}
 }

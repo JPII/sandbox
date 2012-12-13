@@ -26,16 +26,16 @@ public class ImageStorage
 		catch(Exception e){e.printStackTrace();}
 	}
 
-	public void drawAircraftCarrier(Graphics g, int x, int y){
-		g.drawImage(AircraftCarrier,x,y,null);
+	public void drawAircraftCarrier(Graphics2D g, AffineTransform at){
+		g.drawImage(AircraftCarrier,at,null);
 	}
 
 	public void drawBattleShip(Graphics2D g, AffineTransform at){
-		g.drawImage(BattleShip, at, null);
+		g.drawImage(BattleShip,at,null);
 	}
 
-	public void drawSubmarine(Graphics g, int x, int y){
-		g.drawImage(Submarine,x,y,null);
+	public void drawSubmarine(Graphics2D g, AffineTransform at){
+		g.drawImage(Submarine,at,null);
 	}
 
 	public void drawJet(Graphics g, int x, int y){

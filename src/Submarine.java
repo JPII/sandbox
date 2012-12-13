@@ -7,8 +7,8 @@ public class Submarine extends Ship{
 	private ImageStorage is;
 	private boolean moving;
 	
-	public Submarine(int x, int y,int color){
-		super(x,y,color);
+	public Submarine(int x,int y,int color,double angle){
+		super(x,y,color,angle);
 		bullets = new ArrayList<Missle>();
 		is = new ImageStorage();
 	}
@@ -36,9 +36,7 @@ public class Submarine extends Ship{
 	protected void base(Graphics g,int size)
 	{	
 		//x and y are the center of the ship
-		g.setColor(getColor());
-		g.fillRect(x+40, y+15, 20,23);
-		is.drawSubmarine(g, x, y);
+		is.drawSubmarine((Graphics2D)g, rotate(angle,x,y));
 		
 		for(int index=0; index<bullets.size(); index++){
 			bullets.get(index).drawBullet(g);

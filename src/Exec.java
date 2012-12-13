@@ -16,10 +16,10 @@ public class Exec extends JFrame
 	
 	public Exec(){
 		ships = new ArrayList<Ship>();
-		ships.add(new AircraftCarrier(400,150,1));
-		ships.add(new BattleShip(400,250,2));
-		ships.add(new BattleShip(400,350,3));
-		ships.add(new Submarine(400,450,4));
+		ships.add(new AircraftCarrier(400,150,1,0));
+		ships.add(new BattleShip(400,250,2,0));
+		ships.add(new BattleShip(400,350,3,0));
+		ships.add(new Submarine(400,450,4,0));
 		init();
 	}
 	public void init()
@@ -39,11 +39,13 @@ public class Exec extends JFrame
 			@Override
 			public void keyPressed(KeyEvent k) {
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-					ships.get(selected).addX(-50);
+				//	ships.get(selected).addX(-50);
+					ships.get(selected).addAngle(-45);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-					ships.get(selected).addX(50);
+				//	ships.get(selected).addX(50);
+					ships.get(selected).addAngle(45);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_UP){
@@ -69,10 +71,10 @@ public class Exec extends JFrame
 				if(k.getKeyCode() == KeyEvent.VK_HOME){
 					selected = 1;
 					ships = new ArrayList<Ship>();
-					ships.add(new BattleShip(400,350,1));
-					ships.add(new BattleShip(400,250,2));
-					ships.add(new AircraftCarrier(400,150,1));
-					ships.add(new Submarine(400,450,2));
+					ships.add(new BattleShip(400,350,1,0));
+					ships.add(new BattleShip(400,250,2,0));
+					ships.add(new AircraftCarrier(400,150,1,0));
+					ships.add(new Submarine(400,450,2,0));
 					repaint();
 				}
 			}
