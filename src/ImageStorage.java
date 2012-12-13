@@ -8,18 +8,15 @@ public class ImageStorage
 	public Image AircraftCarrier;
 	public Image BattleShip;
 	public Image Submarine;
-	public Image Jet;
 	String s;
 
 	public ImageStorage()
 	{
 		try{
-			s = "AircraftCarrier/AircraftCarrier.png";
+			s = "AircraftCarrier/AircraftCarrier2.png";
 				AircraftCarrier = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
 			s = "BattleShip/BattleShip.png";
 				BattleShip = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
-			s = "Plane/Jet Fighter.png";
-				Jet = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
 			s = "Submarine/Submarine.png";
 				Submarine = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
 		}
@@ -36,9 +33,5 @@ public class ImageStorage
 
 	public void drawSubmarine(Graphics2D g, AffineTransform at){
 		g.drawImage(Submarine,at,null);
-	}
-
-	public void drawJet(Graphics g, int x, int y){
-		g.drawImage(Jet,x,y,null);
 	}
 }

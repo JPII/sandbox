@@ -12,8 +12,6 @@ public class AircraftCarrier extends Ship{
 	{	
 		//x and y are the center of the ship
 		is.drawAircraftCarrier((Graphics2D)g, rotate(angle,x,y));
-		for(int q = 105; q <= 200; q += 30)
-			is.drawJet(g,x+q,y+3);
 	}
 
 	public void MouseMoved(int x, int y) {	

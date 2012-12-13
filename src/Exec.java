@@ -39,12 +39,18 @@ public class Exec extends JFrame
 			@Override
 			public void keyPressed(KeyEvent k) {
 				if(k.getKeyCode() == KeyEvent.VK_LEFT){
-				//	ships.get(selected).addX(-50);
-					ships.get(selected).addAngle(45);
+					ships.get(selected).addX(-50);
 					repaint();
 				}
 				if(k.getKeyCode() == KeyEvent.VK_RIGHT){
-				//	ships.get(selected).addX(50);
+					ships.get(selected).addX(50);
+					repaint();
+				}
+				if(k.getKeyCode() == KeyEvent.VK_O){
+					ships.get(selected).addAngle(45);
+					repaint();
+				}
+				if(k.getKeyCode() == KeyEvent.VK_P){
 					ships.get(selected).addAngle(-45);
 					repaint();
 				}

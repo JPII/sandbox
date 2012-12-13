@@ -64,6 +64,12 @@ public abstract class Ship {
 		}
 	}
 	
+	public AffineTransform rotate(double angle, double distancex, double distancey,int imgwidth,int imgheight) {
+		AffineTransform aff = new AffineTransform();
+		aff.translate(distancex-imgwidth,distancey-imgheight);
+		aff.rotate(angle / 57.29577);
+		return aff;
+	}
 	public AffineTransform rotate(double angle, double distancex, double distancey) {
 		AffineTransform aff = new AffineTransform();
 		aff.translate(distancex,distancey);
