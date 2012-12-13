@@ -46,11 +46,11 @@ public class Exec extends JFrame
 					ships.get(selected).addX(50);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_O){
+				if(k.getKeyCode() == KeyEvent.VK_Z){
 					ships.get(selected).addAngle(45);
 					repaint();
 				}
-				if(k.getKeyCode() == KeyEvent.VK_P){
+				if(k.getKeyCode() == KeyEvent.VK_X){
 					ships.get(selected).addAngle(-45);
 					repaint();
 				}
