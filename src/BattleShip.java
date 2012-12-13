@@ -60,6 +60,15 @@ public class BattleShip extends Ship {
 		}
 	}
 	
+	protected void addAngle(int theta){
+		super.addAngle(theta);
+		int halfcellwidth = 25;
+		int imgheight = is.BattleShip.getHeight(null);
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).shipRotated(angle,x+halfcellwidth,y+imgheight/2);
+		}
+	}
+	
 	protected void base(Graphics g, int size)
 	{
 		int halfcellwidth = 25;

@@ -27,7 +27,7 @@ public abstract class Ship {
 	public void addY(int y){
 		this.y+=y;
 	}
-	public void addAngle(double angle){
+	protected void addAngle(int angle){
 		this.angle+=angle;
 	}
 	public int getX(){

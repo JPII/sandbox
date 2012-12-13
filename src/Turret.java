@@ -3,12 +3,11 @@ import java.awt.*;
 
 
 public class Turret {
-	private int centerx;
-	private int centery;
+	private double centerx;
+	private double centery;
 	private int rotation;
 	private int shipRotation;
 	private int maxRotation;
-	//private int minRotation;
 	private int size;
 	private int gunSize;
 	private int desrotation;
@@ -18,12 +17,10 @@ public class Turret {
 	private ArrayList<Bullet> bullets;
 	
 	public Turret() {}
-	
 	public Turret(int x, int y, int max, int min, int size, int shipRotation){
 		centerx = x;
 		centery = y;
 		maxRotation = max;
-		//minRotation = min;
 		rotation = 0;
 		this.shipRotation = shipRotation;
 		this.size = size;
@@ -68,7 +65,7 @@ public class Turret {
 	}
 	
 	public void fireGun(int x, int y){
-		bullets.add(new Bullet(centerx,centery,x,y));
+		bullets.add(new Bullet((int)centerx,(int)centery,x,y));
 	}
 	
 	@SuppressWarnings("unused")
@@ -99,6 +96,9 @@ public class Turret {
 		int yoffset = (cvalue+svalue)/2;
 		int offset = -1*(cvalue-svalue)/2;
 		
+		int centerx = (int)this.centerx;
+		int centery = (int)this.centery;
+		
 		g.setColor(Color.gray.darker());
 		int xarray[] = {centerx-offset,centerx+svalue-offset,centerx+svalue-cvalue-offset,centerx-cvalue-offset};
 		int yarray[] = {centery+yoffset,centery-cvalue+yoffset,centery-cvalue-svalue+yoffset,centery-svalue+yoffset};
@@ -122,5 +122,19 @@ public class Turret {
 				moving = true;
 			}
 		}
+	}
+	public void shipRotated(double theta,int x, int y) {
+		double xdistance = Math.abs(centerx - x);
+		double ydistance = Math.abs(centery - y);
+		double totaldistance = Math.sqrt( xdistance*xdistance + ydistance*ydistance);
+		
+		centerx = x;
+		centery = y;
+	
+		xdistance = (totaldistance*Math.cos(Math.toRadians(theta)));
+		ydistance = (totaldistance*Math.sin(Math.toRadians(theta)));
+		
+		centerx += xdistance;
+		centery += ydistance;
 	}
 }
