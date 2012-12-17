@@ -10,6 +10,7 @@ public class TankTest extends JFrame
 	
 	public TankTest(){
 		super("TankTest");
+		ImageStorage.init();
 		cb = new GamePaint(800,600);
 		getContentPane().setLayout(null);
 		setContentPane(cb);

@@ -12,7 +12,7 @@ public class GamePaint extends JComponent implements MouseListener{
 	Timer timer;
 	int ticksize = 5;
 	long ticks = 0;
-	public ArrayList<Ship> ships;
+	public ArrayList<BaseTank> ships;
 	public ArrayList<KeyEvent> keys;
 	int selected = 0;
 	ActionListener al;
@@ -38,9 +38,9 @@ public class GamePaint extends JComponent implements MouseListener{
 	}
 	
 	public void init(){
-		ships = new ArrayList<Ship>();
+		ships = new ArrayList<BaseTank>();
 		keys = new ArrayList<KeyEvent>();
-		ships.add(new Tank(400,350,3,0));
+		ships.add(new Tank(400,350,1,0));
 	}
 	
 	public void tick() {
