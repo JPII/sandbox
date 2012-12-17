@@ -20,4 +20,9 @@ public class Tank extends BattleShip{
 		g.fillRect(x, y, imgwidth, imgheight);
 		((Graphics2D)g).drawImage(is.getTank(),rotate(angle,x,y,halfcellwidth,imgheight/2),null);
 	}
+	public void MouseClicked(int x, int y){
+		for(int index = 0; index<guns.size(); index++){
+			guns.get(index).MouseClicked(x,y);
+		}
+	}
 }

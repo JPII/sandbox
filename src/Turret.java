@@ -65,7 +65,8 @@ public class Turret {
 	}
 	
 	public void fireGun(int x, int y){
-		bullets.add(new Bullet((int)centerx,(int)centery,x,y));
+		if(bullets.size()<5)
+			bullets.add(new Bullet((int)centerx,(int)centery,x,y));
 	}
 	
 	@SuppressWarnings("unused")
