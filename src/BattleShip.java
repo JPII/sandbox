@@ -2,15 +2,15 @@ import java.awt.*;
 import java.util.*;
 
 public class BattleShip extends Ship {
-	protected ArrayList<Turret> guns;
-	protected ImageStorage is;
+	private ArrayList<Turret> guns;
+	private ImageStorage is;
 	public BattleShip(int x,int y,int color,double angle){
 		super(x,y,color,angle);
 		guns = new ArrayList<Turret>();
 		is = new ImageStorage();
 		initArray();
 	}	
-	protected void initArray(){
+	private void initArray(){
 		guns.add(new Turret(x+70,y+25,270,0,size,WEST));
 		guns.add(new Turret(x+35,y+25,270,0,size,WEST));
 		guns.add(new Turret(x+145,y+25,270,0,size,WEST));

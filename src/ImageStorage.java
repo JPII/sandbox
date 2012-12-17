@@ -8,7 +8,6 @@ public class ImageStorage
 	public Image AircraftCarrier;
 	public Image BattleShip;
 	public Image Submarine;
-	public Image Tank;
 	String s;
 
 	public ImageStorage()
@@ -20,8 +19,6 @@ public class ImageStorage
 				BattleShip = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
 			s = "Submarine/Submarine.png";
 				Submarine = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
-			s = "Other/TankBase.png";
-				Tank = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
 		}
 		catch(Exception e){e.printStackTrace();}
 	}
@@ -36,9 +33,5 @@ public class ImageStorage
 
 	public void drawSubmarine(Graphics2D g, AffineTransform at){
 		g.drawImage(Submarine,at,null);
-	}
-	
-	public Image getTank(){
-		return Tank;
 	}
 }
