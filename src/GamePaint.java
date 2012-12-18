@@ -52,34 +52,46 @@ public class GamePaint extends JComponent implements MouseListener{
 		for(int index = 0; index<ships.size();index++){
 			ships.get(index).drawShip(g);
 		}
+		
+		g.setColor(Color.red);
+		g.drawLine(x, y, x, y);
 	}
 	
 	public void getKeys(){
+		boolean akey=false;
+		int addx=0;
+		int addy=0;
 		for(int index = 0; index<keys.size();index++){
+			akey=true;
 			KeyEvent current = keys.get(index);
 			if(current.getKeyCode()==KeyEvent.VK_LEFT || current.getKeyCode()==KeyEvent.VK_A){
+				addx+=-1;
 				for(int count = 0; count<ships.size();count++){
-					ships.get(count).addX(-1);
 					ships.get(selected).MouseMoved(x,y);
 				}
 			}
 			if(current.getKeyCode()==KeyEvent.VK_RIGHT || current.getKeyCode()==KeyEvent.VK_D){
+				addx+=1;
 				for(int count = 0; count<ships.size();count++){
-					ships.get(count).addX(1);
 					ships.get(selected).MouseMoved(x,y);
 				}
 			}
 			if(current.getKeyCode()==KeyEvent.VK_UP || current.getKeyCode()==KeyEvent.VK_W){
+				addy+=-1;
 				for(int count = 0; count<ships.size();count++){
-					ships.get(count).addY(-1);
 					ships.get(selected).MouseMoved(x,y);
 				}
 			}
 			if(current.getKeyCode()==KeyEvent.VK_DOWN || current.getKeyCode()==KeyEvent.VK_S){
+				addy+=1;
 				for(int count = 0; count<ships.size();count++){
-					ships.get(count).addY(1);
 					ships.get(selected).MouseMoved(x,y);
 				}
+			}
+		}
+		if(akey){
+			for(int count = 0; count<ships.size();count++){
+				ships.get(count).move(addx,addy);
 			}
 		}
 	}
@@ -114,8 +126,8 @@ public class GamePaint extends JComponent implements MouseListener{
     	ships.get(selected).MouseMoved(x,y);
 	}
 	public void mouseMoved2(MouseEvent e) {
-		x = e.getX()-8;
-    	y = e.getY()-32;
+		x = e.getX();
+    	y = e.getY();
     	ships.get(selected).MouseMoved(x,y);
 	}
 	public void pressed(KeyEvent k) {

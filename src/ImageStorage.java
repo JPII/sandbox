@@ -17,8 +17,8 @@ public class ImageStorage
 		catch(Exception e){e.printStackTrace();}
 	}
 	
-	public static void drawTank(Graphics g,AffineTransform at){
-		((Graphics2D)g).drawImage(Tank,at,null);
+	public static void drawTank(Graphics g,Image tank,AffineTransform at){
+		((Graphics2D)g).drawImage(tank,at,null);
 	}
 	
 	public static Image getTank(){

@@ -17,10 +17,16 @@ public abstract class BaseTank {
 		this.angle=angle;
 		command = new Rectangle(x,y,50,50);
 	}
-	public void addX(int x){
+	public void move(int x,int y){
+		if(x!=0){
+			angle = 90+(Math.toDegrees(Math.atan(y/x)));
+		if(x<0)
+			angle+=180;
+		}
+		else{
+			angle = 90+Math.toDegrees(Math.asin(y));
+		}
 		this.x+=x;
-	}
-	public void addY(int y){
 		this.y+=y;
 	}
 	protected void addAngle(int angle){

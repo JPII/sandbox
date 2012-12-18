@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 
@@ -13,20 +14,13 @@ public class Tank extends BaseTank{
 	}
 	
 	protected void initArray(){
-		guns.add(new Turret(x+25,y+25,270,0,20,0));
+		guns.add(new Turret(x+25,y+25,getColor(),20,0));
 	}
 	
-	public void addX(int x){
-		super.addX(x);
+	public void move(int x,int y){
+		super.move(x,y);		
 		for(int index = 0; index<guns.size(); index++){
-			guns.get(index).addX(x);
-		}
-	}
-	
-	public void addY(int y){
-		super.addY(y);
-		for(int index = 0; index<guns.size(); index++){
-			guns.get(index).addY(y);
+			guns.get(index).move(x,y);
 		}
 	}
 	public void MouseMoved(int x, int y){
@@ -75,9 +69,14 @@ public class Tank extends BaseTank{
 		int imgheight = ImageStorage.getTank().getHeight(null);
 		int imgwidth = ImageStorage.getTank().getWidth(null);
 		
-		g.setColor(getColor());
-		g.fillRect(x, y, imgwidth, imgheight);
-				
-		ImageStorage.drawTank(g,rotate(angle,x,y,halfcellwidth,imgheight/2));
+		Image tank;
+		BufferedImage img = new BufferedImage(imgheight, imgwidth, BufferedImage.TYPE_INT_RGB);
+		tank = img;
+		Graphics g2 = tank.getGraphics();
+		g2.setColor(getColor());
+		g2.fillRect(0, 0, imgwidth, imgheight);
+		g2.drawImage(ImageStorage.getTank(), 0, 0, null);
+		
+		ImageStorage.drawTank(g,tank,rotate(angle,x,y,halfcellwidth,imgheight/2));
 	}
 }
