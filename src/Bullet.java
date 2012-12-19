@@ -1,7 +1,7 @@
 
 public class Bullet extends BaseBullet{
-	
-	public Bullet(int sx,int sy,int ex, int ey){
-		super(sx, sy, ex, ey);
+
+	public Bullet(int sx, int sy, int clickx, int clicky, BaseTank fired) {
+		super(sx, sy, clickx, clicky, fired);
 	}
 }

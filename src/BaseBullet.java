@@ -2,25 +2,34 @@ import java.awt.*;
 
 public class BaseBullet {
 	protected double startx;
-	protected double endx;
 	protected double starty;
-	protected double endy;
+	
 	protected int currentx;
 	protected int currenty;
 	protected int count;
 	
+	protected double theta;
+	
+	protected BaseTank fired;
 	protected boolean moving;
 	protected boolean done;
 	
-	public BaseBullet(int sx,int sy,int ex, int ey){
+	public BaseBullet(int sx,int sy,int clickx, int clicky,BaseTank fired){
+		this.fired = fired;
 		startx = sx;
 		starty = sy;
-		endx = ex;
-		endy = ey;
 		currentx=(int)startx-1;
 		currenty=(int)starty-1;
 		count = 0;
 		moving =false;
+		
+		if(clickx-startx!=0)
+		theta = Math.atan((clicky-starty)/(clickx-startx));
+		else
+			theta = Math.asin(clicky-starty);
+		if(clickx-startx < 0 ){
+			theta+=Math.PI;
+		}
 	}
 	
 	public boolean needsRepaint(){
@@ -30,12 +39,6 @@ public class BaseBullet {
 	}
 	
 	protected void increaseX(int ammount){
-		double xdistance = endx-startx;
-		double ydistance = endy-starty;
-		double theta = Math.atan(ydistance/xdistance);
-		if(xdistance < 0 ){
-			theta+=Math.PI;
-		}
 		double x = (count)*Math.cos(theta);
 		double y = (count)*Math.sin(theta);
 		currentx=(int)(x+startx);
@@ -44,10 +47,7 @@ public class BaseBullet {
 	}
 	
 	public void drawBullet(Graphics g){
-		if(endx < currentx)
-			increaseX(-1);
-		if(endx>currentx)
-			increaseX(1);
+		increaseX(1);
 		g.setColor(new Color(150,0,150,150));
 		drawBull(g);
 		if(isnearX()){
@@ -67,9 +67,6 @@ public class BaseBullet {
 	}
 	
 	protected boolean isnearX(){
-		if(currentx<(int)endx+2 && currentx > (int)endx-2){
-				return false;
-		}
 		return true;
 	}
 	

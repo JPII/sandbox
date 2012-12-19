@@ -11,12 +11,14 @@ public class Turret {
 	private int gunSize;
 	Color c;
 	
+	private BaseTank owner;
+	
 	private boolean moving;
 	
 	private ArrayList<BaseBullet> bullets;
 	
 	public Turret() {}
-	public Turret(int x, int y,Color c, int size, int shipRotation){
+	public Turret(int x, int y, int size, int shipRotation,BaseTank owner){
 		centerx = x;
 		centery = y;
 		rotation = 0;
@@ -25,7 +27,8 @@ public class Turret {
 		gunSize = 4;
 		bullets = new ArrayList<BaseBullet>();
 		moving = false;
-		this.c = c;
+		this.c = owner.getColor();
+		this.owner = owner;
 	}
 	
 	public void MouseMoved(int x, int y){
@@ -64,7 +67,7 @@ public class Turret {
 	
 	public void fireGun(int x, int y){
 		if(bullets.size()<5)
-			bullets.add(new BaseBullet((int)centerx,(int)centery,x,y));
+			bullets.add(new BaseBullet((int)centerx,(int)centery,x,y,owner));
 	}
 	
 	private int getCos(int size,int gunRotation){

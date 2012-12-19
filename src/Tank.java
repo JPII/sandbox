@@ -14,7 +14,7 @@ public class Tank extends BaseTank{
 	}
 	
 	protected void initArray(){
-		guns.add(new Turret(x+25,y+25,getColor(),20,0));
+		guns.add(new Turret(x+25,y+25,20,0,this));
 	}
 	
 	public void move(int x,int y){

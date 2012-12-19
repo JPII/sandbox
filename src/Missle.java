@@ -5,15 +5,13 @@ public class Missle extends BaseBullet{
 	
 	private int distance;
 	
-	public Missle(int sx, int sy, int ex, int ey) {
-		super(sx, sy, ex, ey);
+	public Missle(int sx, int sy, int clickx, int clicky, BaseTank fired) {
+		super(sx, sy, clickx, clicky, fired);
 	}
 	
 	public void MouseMoved(int x, int y){
 		startx = currentx;
 		starty = currenty;
-		endx = x;
-		endy = y;
 		count = 4;
 	}
 	
@@ -37,11 +35,6 @@ public class Missle extends BaseBullet{
 	}
 	
 	protected boolean isnearX(){
-		if(currentx<(int)endx+4 && currentx > (int)endx-4){
-			if(currenty<(int)endy+4 && currenty > (int)endy-4){
-				return false;
-			}
-		}
 		return true;
 	}
 }
