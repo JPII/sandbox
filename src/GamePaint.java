@@ -8,9 +8,9 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class GamePaint extends JComponent implements MouseListener{
 	int width, height;
-	BufferedImage buffer;
+	BufferedImage buffer,background;
 	Timer timer;
-	int ticksize = 5;
+	int ticksize = 0;
 	long ticks = 0;
 	public ArrayList<BaseTank> ships;
 	public ArrayList<KeyEvent> keys;
@@ -41,13 +41,21 @@ public class GamePaint extends JComponent implements MouseListener{
 		ships = new ArrayList<BaseTank>();
 		keys = new ArrayList<KeyEvent>();
 		ships.add(new Tank(400,350,1,0));
+		
+		background = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
+		Graphics g = background.getGraphics();
+		
+		for(int k = 0; k<height; k+=ImageStorage.getSand().getHeight(null)){	
+			for(int i = 0; i<width; i+=ImageStorage.getSand().getWidth(null)){
+				g.drawImage(ImageStorage.getSand(),i,k,null);
+			}
+		}
 	}
 	
 	public void tick() {
 		buffer = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
 		Graphics g = buffer.getGraphics();
-		g.setColor(Color.white);
-		g.fillRect(0, 0, width, height);
+		g.drawImage(background,0,0,null);
 		
 		for(int index = 0; index<ships.size();index++){
 			ships.get(index).drawShip(g);

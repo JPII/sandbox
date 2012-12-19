@@ -13,7 +13,7 @@ public class Turret {
 	
 	private boolean moving;
 	
-	private ArrayList<Bullet> bullets;
+	private ArrayList<BaseBullet> bullets;
 	
 	public Turret() {}
 	public Turret(int x, int y,Color c, int size, int shipRotation){
@@ -23,7 +23,7 @@ public class Turret {
 		this.shipRotation = shipRotation;
 		this.size = size;
 		gunSize = 4;
-		bullets = new ArrayList<Bullet>();
+		bullets = new ArrayList<BaseBullet>();
 		moving = false;
 		this.c = c;
 	}
@@ -64,7 +64,7 @@ public class Turret {
 	
 	public void fireGun(int x, int y){
 		if(bullets.size()<5)
-			bullets.add(new Bullet((int)centerx,(int)centery,x,y));
+			bullets.add(new BaseBullet((int)centerx,(int)centery,x,y));
 	}
 	
 	private int getCos(int size,int gunRotation){

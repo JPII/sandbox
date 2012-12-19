@@ -1,7 +1,7 @@
 import java.awt.*;
 
 
-public class Missle extends Bullet{
+public class Missle extends BaseBullet{
 	
 	private int distance;
 	

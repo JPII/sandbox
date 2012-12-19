@@ -5,7 +5,7 @@ import javax.imageio.*;
 
 public class ImageStorage 
 {
-	public static Image Tank;
+	public static Image Tank,Sand;
 	private static String s;
 
 	public static void init()
@@ -13,6 +13,8 @@ public class ImageStorage
 		try{
 			s = "Tank/TankBase.png";
 				Tank = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
+			s = "Tank/sand3.jpg";
+				Sand = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/" + s));
 		}
 		catch(Exception e){e.printStackTrace();}
 	}
@@ -23,5 +25,9 @@ public class ImageStorage
 	
 	public static Image getTank(){
 		return Tank;
+	}
+	
+	public static Image getSand(){
+		return Sand;
 	}
 }
