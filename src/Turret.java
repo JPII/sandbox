@@ -66,8 +66,8 @@ public class Turret {
 	}
 	
 	public void fireGun(int x, int y){
-		if(bullets.size()<5)
-			bullets.add(new BaseBullet((int)centerx,(int)centery,x,y,owner));
+		if(BulletManager.getNumOwn(owner)<5)
+			BulletManager.add(new Bullet((int)centerx,(int)centery,x,y,owner));
 	}
 	
 	private int getCos(int size,int gunRotation){

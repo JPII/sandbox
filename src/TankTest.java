@@ -18,6 +18,7 @@ public class TankTest extends JFrame
 		setSize(800,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		setResizable(false);
 		
 		cb.start();
 		

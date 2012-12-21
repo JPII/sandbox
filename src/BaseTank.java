@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
 
 public abstract class BaseTank {
 	
@@ -8,14 +9,14 @@ public abstract class BaseTank {
 	protected int color;
 	protected double angle;
 	
-	protected Rectangle command;
+	public Rectangle rectangle;
 	
 	public BaseTank(int x, int y,int color,double angle){
 		this.x=x;
 		this.y=y;
 		this.color=color;
 		this.angle=angle;
-		command = new Rectangle(x,y,50,50);
+		rectangle = new Rectangle(x,y,ImageStorage.getTank().getWidth(null),ImageStorage.getTank().getHeight(null));
 	}
 	public void move(int x,int y){
 		if(x!=0){
@@ -53,6 +54,16 @@ public abstract class BaseTank {
 		base(g);
 	}	
 	abstract protected void base(Graphics g);
+	
+	public void checkPhysics(){
+		ArrayList<Rectangle> rects = new ArrayList<Rectangle>();
+		rects.add(rectangle);
+		ArrayList<Integer> temp = BulletManager.isInside(rects);
+		if(!temp.isEmpty()){
+			BulletManager.remove(temp);
+			System.out.println("intersected");
+		}
+	}
 	
 	protected Color getColor(){
 		switch(color){
