@@ -30,7 +30,7 @@ public class Submarine extends Ship{
 		}
 	}
 	public void MouseClicked(int x, int y){
-		bullets.add(new Missle(this.x,this.y,x,y));
+		bullets.add(new Missle(this.x,this.y+25,x,y));
 	}
 	
 	protected void base(Graphics g,int size)
