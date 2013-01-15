@@ -1,4 +1,6 @@
 import java.awt.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
@@ -9,6 +11,7 @@ public class Exec extends JFrame
 {
 	Image grid;
 	Image i;
+	Image Water;
 	Graphics g;
 	
 	public int selected=1;
@@ -21,6 +24,10 @@ public class Exec extends JFrame
 		ships.add(new BattleShip(400,350,3,0));
 		ships.add(new Submarine(400,450,4,0));
 		init();
+		try{
+			Water = ImageIO.read(ImageStorage.class.getResource("/com/jpii/navalbattle/res/drawable-game/Other/cornporn.png"));
+		}
+		catch(Exception e){e.printStackTrace();}
 	}
 	public void init()
 	{
@@ -33,7 +40,6 @@ public class Exec extends JFrame
 		for (int y = 0; y < 600; y += 50){
 			gs.drawLine(0,y,800,y);
 		}
-		
 		reset();
 		this.addKeyListener(new KeyListener() {
 			@Override
@@ -118,11 +124,9 @@ public class Exec extends JFrame
 		battleship.setVisible(true);
 	}
 	public void paint(Graphics g2){
-		g.setColor(Color.white);
-		g.fillRect(0,0,800,600);
-		
+		g.drawImage(Water,0,0,null);
 		g.drawImage(grid, 0,0, null);
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.drawString("Left moves the ship left", 55, 100);
 		g.drawString("Right moves the ship right",55, 125);
 		g.drawString("Down moves the ship down", 55, 150);
