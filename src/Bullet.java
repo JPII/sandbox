@@ -48,7 +48,7 @@ public class Bullet {
 			increaseX(-1);
 		if(endx>currentx)
 			increaseX(1);
-		g.setColor(new Color(150,150,0,150));
+		g.setColor(new Color(150,150,0));
 		drawBull(g);
 		if(isnearX()){
 			moving=true;
