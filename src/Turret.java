@@ -1,8 +1,6 @@
 import java.util.*;
 import java.awt.*;
 
-import BattleShip.Bullet;
-
 
 public class Turret {
 	private double centerx;
