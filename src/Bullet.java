@@ -1,3 +1,6 @@
+import BaseBullet;
+import BaseTank;
+
 
 public class Bullet extends BaseBullet{
 	
