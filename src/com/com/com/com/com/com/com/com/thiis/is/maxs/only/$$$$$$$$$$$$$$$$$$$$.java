@@ -1,7 +1,12 @@
 package com.com.com.com.com.com.com.com.thiis.is.maxs.only;
 
+import java.awt.Point;
+
 public class $$$$$$$$$$$$$$$$$$$$ {
 	private static int width = 50, height = 50;
+	private static $4[] set;
+	private static long seed = (long)(Math.random() * Long.MAX_VALUE);
+	private static Rand rand = new Rand(seed);
 	static {
 		$();
 	}
@@ -11,28 +16,30 @@ public class $$$$$$$$$$$$$$$$$$$$ {
 	public static void $_00(int width1, int height1) {
 		width = width1;
 		height = height1;
+		set = new $4[rand.nextInt(25,35)];
+		Point near = new Point(rand.nextInt(50,width-50),rand.nextInt(50,height-50));
+		near.x = (near.x+width)/3;
+		near.y = (near.y+height)/3;
+		for (int s = 0; s < set.length; s++) {
+			set[s] = new $4(new Point(near.x+rand.nextInt(-20,20),near.y+rand.nextInt(-20,20)), rand.nextInt(5,15));
+		}
 	}
 	public static float $(float cx, float cz) {
-		if (cx <= 0 || cz <= 0 || cx >= width || cz >= height) {
-			return 0.0f;
+		float f = 0.0f;
+		int count = 0;
+		for (int c = 0; c < set.length; c++) {
+			float radius = set[c].radius;
+			Point p = set[c].point;
+			float dist = (float)Math.sqrt(Math.pow(p.x - cx,2)+Math.pow(p.y - cz,2));
+			if (dist <= radius) {
+				f += ($$$$$(1.0f,0.2f,dist/radius)/4);
+				count++;
+			}
 		}
-		else if (cx <= 30 && (cz >= 30 && cz <= height-30)) {
-			return $$$$$(0,ProceduralLayeredMapGenerator.getPoint(cx, cz),cx/30.0f);
+		if (count-1 > 0) {
+		//	f = f/(count-1);
 		}
-		else if (cz <= 30 && (cx >= 30 && cx <= width-30)) {
-			return $$$$$(0,ProceduralLayeredMapGenerator.getPoint(cx, cz),cz/30.0f);
-		}
-		else if (cx >= width-30 && (cz >= 30 && cz <= height-30)) {
-			return $$$$$(0,ProceduralLayeredMapGenerator.getPoint(cx, cz),(width-cx)/30.0f);
-		}
-		else if (cz >= height-30 && (cx >= 30 && cx <= width-30)) {
-			return $$$$$(0,ProceduralLayeredMapGenerator.getPoint(cx, cz),(height-cz)/30.0f);
-		}
-		else if (!(cz >= 30 && cz <= height-30) || !(cx >= 30 && cx <= width-30))
-			return 0.0f;
-		else {
-			return ProceduralLayeredMapGenerator.getPoint(cx, cz);
-		}
+		return ((f*1.75f) + ProceduralLayeredMapGenerator.getPoint(cx/4, cz/4))/3;
 	}
 	public static float $$$$$(float num0, float num1, float amount)
     {
@@ -40,6 +47,14 @@ public class $$$$$$$$$$$$$$$$$$$$ {
     }
 }
 
+class $4 {
+	public Point point;
+	public int radius;
+	public $4(Point p, int rad) {
+		point = p;
+		radius = rad;
+	}
+}
 class ProceduralLayeredMapGenerator {
 	static Berlin berlin;
 
