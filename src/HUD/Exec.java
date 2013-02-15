@@ -20,11 +20,13 @@ public class Exec extends JFrame
 	}
 	
 	public void paint(Graphics g){
+		g.setColor(Color.white);
+		g.fillRect(0,0,800,600);
 		for(int x = 100; x <= 180; x += 40)
 			g.drawImage(button,x,100,null);
 		g.drawImage(attack,100,100,null);
-		g.drawImage(diplomacy,100,140,null);
-		g.drawImage(move,100,180,null);
+		g.drawImage(diplomacy,140,100,null);
+		g.drawImage(move,180,100,null);
 	}
 	
 	public static void main(String[] args){
