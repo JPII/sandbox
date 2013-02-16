@@ -36,7 +36,7 @@ public class Exec extends JFrame
 		battleship.setVisible(true);
 	}
 	
-	public void update(Graphics g) {
+	public void update(Graphics g){
 		paint(g);
 	}	
 }
