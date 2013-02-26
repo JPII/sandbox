@@ -44,14 +44,15 @@ public class Exec extends JFrame
 			{
 				int gr= random(85,115);
 				int b = random(45,75);
-				g.setColor(new Color(gr,b,b));
+				g.setColor(new Color(b,b,gr));
 				g.fillRect(x,y,4,4);
 			}
 		for(int x0 = w-(((w/3)+(w/3))-8); x0 <= w-((w/3)-8)+5; x0++)
 			for(int y0 = h-125; y0 <= h; y0++)
 			{
-				int r = random(0,250);
-				g.setColor(new Color(r,r,0));
+				int gr= random(85,115);
+				int b = random(45,75);
+				g.setColor(new Color(b,b,gr));
 				g.fillRect(x0,y0,1,1);
 			}
 		g.setColor(new Color(110,110,110));
