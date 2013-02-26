@@ -27,6 +27,7 @@ public class Exec extends JFrame
 		g.setColor(Color.white);
 		g.fillRect(0,0,w,h);
 		window(g);
+		shipGUI(g);
 		for(int x = (w/2)-40; x <= (w/2)+40; x += 40)
 			g.drawImage(button,x,y,null);
 		g.drawImage(attack,(w/2)-40,y,null);
@@ -65,6 +66,23 @@ public class Exec extends JFrame
 		g.drawLine(w-(w-8),h-122,w,h-122);
 		g.setColor(new Color(110,110,110));
 		g.drawLine(w-(w-8),h-121,w,h-121);
+	}
+	
+	public void shipGUI(Graphics g){
+		int w = getWidth();
+		int h = getHeight();
+		g.setColor(new Color(255,255,0,180));
+		g.fillRect((w-(w-8))+7,h-111,27,27);
+		g.fillRect((w-(w-8))+7,h-76,27,27);
+		g.fillRect((w-(w-8))+7,h-41,27,27);
+		g.setColor(new Color(255,255,255,180));
+		g.fillRect((w-(w-8))+60,h-113,w/4,100);
+		g.drawRect((w-(w-8))+5,h-113,30,30);
+		g.drawRect((w-(w-8))+6,h-112,28,28);
+		g.drawRect((w-(w-8))+5,h-78,30,30);
+		g.drawRect((w-(w-8))+6,h-77,28,28);
+		g.drawRect((w-(w-8))+5,h-43,30,30);
+		g.drawRect((w-(w-8))+6,h-42,28,28);
 	}
 	
 	public static int random(int min, int max){
