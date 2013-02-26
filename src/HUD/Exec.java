@@ -27,6 +27,7 @@ public class Exec extends JFrame
 		int y = h-45;
 		g.setColor(Color.white);
 		g.fillRect(0,0,w,h);
+		
 		window(g);
 		shipGUI(g);
 		for(int x = (w/2)-40; x <= (w/2)+40; x += 40)
@@ -42,18 +43,26 @@ public class Exec extends JFrame
 		for(int x = w-(w-8); x <= w; x += 4)
 			for(int y = h-125; y <= h; y += 4)
 			{
-				int gr= random(85,115);
-				int b = random(45,75);
-				g.setColor(new Color(b,b,gr));
+				int d= random(0,10);
+				Color c = getBlue();
+				switch(d){
+				case 1: c = getBlack();
+				case 2: c = getBrown();
+				case 3: c = getBrown();
+				case 4: c = getBrown();
+					default: c = getBlue();
+				}
+				
+				g.setColor(c);
 				g.fillRect(x,y,4,4);
 			}
 		for(int x0 = w-(((w/3)+(w/3))-8); x0 <= w-((w/3)-8)+5; x0++)
 			for(int y0 = h-125; y0 <= h; y0++)
 			{
-				int gr= random(85,115);
-				int b = random(45,75);
-				g.setColor(new Color(b,b,gr));
-				g.fillRect(x0,y0,1,1);
+//				int gr= random(85,115);
+//				int b = random(45,75);
+//				g.setColor(new Color(b,b,gr));
+//				g.fillRect(x0,y0,1,1);
 			}
 		g.setColor(new Color(110,110,110));
 		g.fillRect(w-(((w/3)+(w/3))-8),h-125,5,125);
@@ -106,7 +115,25 @@ public class Exec extends JFrame
 		battleship.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleship.setVisible(true);
 	}
+	private Color getBlue(){
+		int r = random(85,115);
+		int g = random(0,255/2);
+		int b = random((255/2)+g/2,255);
+		return new Color(r,g,b);
+	}
 	
+	private Color getBlack(){
+		int r = 0;
+		int b = random(50,(255/3));
+		return new Color(r,r,b);
+	}
+	
+	private Color getBrown(){
+		int r = random(85,115);
+		int g = random(0,255/2);
+		int b =random(0,255/3);
+		return new Color(r,g,b);
+	}
 	public void update(Graphics g){
 		paint(g);
 	}	
