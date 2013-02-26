@@ -34,10 +34,6 @@ public class Exec extends JFrame
 	{		
 		g.setColor(new Color(75,100,60,180));
 		g.fillRoundRect(8,485,784,100,20,20);
-		g.setColor(new Color(0,255,0));
-		g.fillRoundRect(12,489,100,25,20,20);
-		g.setColor(Color.black);
-		g.drawString("Missiles",38,503);
 		g.setColor(new Color(75,100,60));
 		g.fillRect(8,507,784,85);
 		
