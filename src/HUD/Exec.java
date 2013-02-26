@@ -1,6 +1,7 @@
 package HUD;
 
 import java.awt.*;
+
 import javax.swing.*;
 import javax.imageio.*;
 
@@ -20,21 +21,25 @@ public class Exec extends JFrame
 	}
 	
 	public void paint(Graphics g){
+		int w = getWidth();
+		int h = getHeight();
+		int y = h-45;
 		g.setColor(Color.white);
-		g.fillRect(0,0,800,600);
+		g.fillRect(0,0,w,h);
 		window(g);
-		for(int x = 360; x <= 440; x += 40)
-			g.drawImage(button,x,550,null);
-		g.drawImage(attack,360,550,null);
-		g.drawImage(diplomacy,400,550,null);
-		g.drawImage(move,440,550,null);
+		for(int x = (w/2)-40; x <= (w/2)+40; x += 40)
+			g.drawImage(button,x,y,null);
+		g.drawImage(attack,(w/2)-40,y,null);
+		g.drawImage(diplomacy,w/2,y,null);
+		g.drawImage(move,(w/2)+40,y,null);
 	}
 	
-	public void window(Graphics g){		
-		for(int x = 8; x <= 788; x += 4)
-			for(int y = 507; y <= 592; y += 4)
+	public void window(Graphics g){	
+		int w = getWidth();
+		int h = getHeight();
+		for(int x = w-(w-8); x <= w; x += 4)
+			for(int y = h-100; y <= h; y += 4)
 			{
-			//	int r = random(60,90);
 				int gr= random(85,115);
 				int b = random(45,75);
 				g.setColor(new Color(b,b,gr));
