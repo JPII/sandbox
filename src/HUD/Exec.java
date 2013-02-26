@@ -42,7 +42,7 @@ public class Exec extends JFrame
 			{
 				int gr= random(85,115);
 				int b = random(45,75);
-				g.setColor(new Color(b,b,gr));
+				g.setColor(new Color(gr,b,b));
 				g.fillRect(x,y,4,4);
 			}
 	}
