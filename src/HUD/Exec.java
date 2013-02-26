@@ -22,11 +22,39 @@ public class Exec extends JFrame
 	public void paint(Graphics g){
 		g.setColor(Color.white);
 		g.fillRect(0,0,800,600);
-		for(int x = 100; x <= 180; x += 40)
-			g.drawImage(button,x,100,null);
-		g.drawImage(attack,100,100,null);
-		g.drawImage(diplomacy,140,100,null);
-		g.drawImage(move,180,100,null);
+		window(g);
+		for(int x = 360; x <= 440; x += 40)
+			g.drawImage(button,x,550,null);
+		g.drawImage(attack,360,550,null);
+		g.drawImage(diplomacy,400,550,null);
+		g.drawImage(move,440,550,null);
+	}
+	
+	public void window(Graphics g)
+	{		
+		g.setColor(new Color(75,100,60,180));
+		g.fillRoundRect(8,485,784,100,20,20);
+		g.setColor(new Color(0,255,0));
+		g.fillRoundRect(12,489,100,25,20,20);
+		g.setColor(Color.black);
+		g.drawString("Missiles",38,503);
+		g.setColor(new Color(75,100,60));
+		g.fillRect(8,507,784,85);
+		
+		for(int x = 8; x <= 788; x += 4)
+			for(int y = 507; y <= 588; y += 4)
+			{
+				int r = random(60,90);
+				int gr= random(85,115);
+				int b = random(45,75);
+				g.setColor(new Color(r,gr,b));
+				g.fillRect(x,y,4,4);
+			}
+	}
+	public static int random(int min, int max)
+	{
+		int range = max - min + 1;
+		return (int) (Math.random() * range + min);
 	}
 	
 	public static void main(String[] args){
