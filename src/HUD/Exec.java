@@ -30,25 +30,19 @@ public class Exec extends JFrame
 		g.drawImage(move,440,550,null);
 	}
 	
-	public void window(Graphics g)
-	{		
-		g.setColor(new Color(75,100,60,180));
-		g.fillRoundRect(8,485,784,100,20,20);
-		g.setColor(new Color(75,100,60));
-		g.fillRect(8,507,784,85);
-		
+	public void window(Graphics g){		
 		for(int x = 8; x <= 788; x += 4)
-			for(int y = 507; y <= 588; y += 4)
+			for(int y = 507; y <= 592; y += 4)
 			{
-				int r = random(60,90);
+			//	int r = random(60,90);
 				int gr= random(85,115);
 				int b = random(45,75);
-				g.setColor(new Color(r,gr,b));
+				g.setColor(new Color(b,b,gr));
 				g.fillRect(x,y,4,4);
 			}
 	}
-	public static int random(int min, int max)
-	{
+	
+	public static int random(int min, int max){
 		int range = max - min + 1;
 		return (int) (Math.random() * range + min);
 	}
