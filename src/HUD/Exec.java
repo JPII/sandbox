@@ -8,7 +8,7 @@ import javax.imageio.*;
 @SuppressWarnings("serial")
 public class Exec extends JFrame
 {	
-	Image button,attack,diplomacy,move;
+	Image button,attack,diplomacy,move,battleship;
 	
 	public Exec(){
 		try{
@@ -16,6 +16,7 @@ public class Exec extends JFrame
 			attack 		= ImageIO.read(Exec.class.getResource("Attack.png"));
 			diplomacy	= ImageIO.read(Exec.class.getResource("Diplomacy.png"));
 			move		= ImageIO.read(Exec.class.getResource("Move.png"));
+			battleship  = ImageIO.read(Exec.class.getResource("battleship.png"));
 		}
 		catch(Exception e){e.printStackTrace();}
 	}
@@ -76,13 +77,21 @@ public class Exec extends JFrame
 		g.fillRect((w-(w-8))+7,h-76,27,27);
 		g.fillRect((w-(w-8))+7,h-41,27,27);
 		g.setColor(new Color(255,255,255,180));
-		g.fillRect((w-(w-8))+60,h-113,w/4,100);
+		g.fillRect((w-(w-8))+60,h-113,(w/4)+1,100);
 		g.drawRect((w-(w-8))+5,h-113,30,30);
 		g.drawRect((w-(w-8))+6,h-112,28,28);
 		g.drawRect((w-(w-8))+5,h-78,30,30);
 		g.drawRect((w-(w-8))+6,h-77,28,28);
 		g.drawRect((w-(w-8))+5,h-43,30,30);
 		g.drawRect((w-(w-8))+6,h-42,28,28);
+		g.setColor(Color.red);
+		g.fillRect((w-(w-8))+150,h-47,50,23);
+		g.drawImage(battleship,(w-(w-8))+60,h-60,null);
+		g.setColor(Color.black);
+		g.drawString("Health: 100",(w-(w-8))+62,h-100);
+		g.drawString("Ammo: Unlimited",(w-(w-8))+62,h-85);
+		g.drawString("Upgrades: Explosive Ammo",(w-(w-8))+62,h-70);
+		g.drawString("Location: 23:40",(w-(w-8))+62,h-55);
 	}
 	
 	public static int random(int min, int max){
