@@ -38,7 +38,7 @@ public class Exec extends JFrame
 		int w = getWidth();
 		int h = getHeight();
 		for(int x = w-(w-8); x <= w; x += 4)
-			for(int y = h-100; y <= h; y += 4)
+			for(int y = h-125; y <= h; y += 4)
 			{
 				int gr= random(85,115);
 				int b = random(45,75);
