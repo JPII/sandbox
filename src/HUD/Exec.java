@@ -59,10 +59,10 @@ public class Exec extends JFrame
 		for(int x0 = w-(((w/3)+(w/3))-8); x0 <= w-((w/3)-8)+5; x0++)
 			for(int y0 = h-125; y0 <= h; y0++)
 			{
-//				int gr= random(85,115);
-//				int b = random(45,75);
-//				g.setColor(new Color(b,b,gr));
-//				g.fillRect(x0,y0,1,1);
+				int gr= random(85,115);
+				int b = random(45,75);
+				g.setColor(new Color(b,b,gr));
+				g.fillRect(x0,y0,1,1);
 			}
 		g.setColor(new Color(110,110,110));
 		g.fillRect(w-(((w/3)+(w/3))-8),h-125,5,125);
