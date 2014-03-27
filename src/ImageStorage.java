@@ -5,7 +5,7 @@ import javax.imageio.*;
 
 public class ImageStorage 
 {
-	public static Image Bird,Sand;
+	public static Image Bird, Sand;
 	private static String s;
 
 	public static void init()
