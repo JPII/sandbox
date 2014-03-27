@@ -40,10 +40,7 @@ public class GamePaint extends JComponent implements MouseListener{
 	public void init(){
 		ships = new ArrayList<BaseTank>();
 		keys = new ArrayList<KeyEvent>();
-		ships.add(new Tank(400,350,1,0));
-		ships.add(new Tank(100,150,2,0));
-		BulletManager.init();
-		Barrier.init(width, height);
+		ships.add(new Bird(100,150,0));
 		
 		background = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
 		Graphics g = background.getGraphics();
@@ -64,9 +61,6 @@ public class GamePaint extends JComponent implements MouseListener{
 			ships.get(index).drawShip(g);
 			ships.get(index).checkPhysics();
 		}
-		Barrier.checkPhysics();
-		BulletManager.act(g);
-		Barrier.drawBarriers(g);
 		
 		g.setColor(Color.red);
 		g.drawLine(x, y, x, y);
